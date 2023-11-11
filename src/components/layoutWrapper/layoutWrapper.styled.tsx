@@ -9,7 +9,16 @@ export const StyledLayoutWrapper = styled.div`
         max-width: 1172px;
     }
 
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.l}) {
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.l}px) {
         max-width: 508px;
+    }
+    
+    @media screen and (min-width: ${breakpoints.xxs}px) and (max-width: ${breakpoints.s - 1}px) {
+        max-width: 320px;
+    }
+
+    @media screen and (max-width: ${breakpoints.xxs - 1}px) {
+        padding: 0 16px;
+        max-width: 100%;
     }
 `;

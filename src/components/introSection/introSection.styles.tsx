@@ -94,7 +94,7 @@ export const StyledDescription = styled.p`
         line-height: 30px;
     }
 
-    @media screen and (min-width: ${breakpoints.s}) and (max-width: ${breakpoints.m - 1}px) {
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
         margin-top: 32px;
         font-size: 20px;
         line-height: 25px;

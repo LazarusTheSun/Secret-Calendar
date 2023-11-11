@@ -5,6 +5,7 @@ import { StyledTitle } from './app.styled';
 import Header from '../header/header';
 import IntroSection from '../introSection/introSection';
 import LayoutWrapper from '../layoutWrapper/layoutWrapper';
+import Calendar from '../calendar/calendar';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <Header />
             <LayoutWrapper>
                 <IntroSection />
+                <Calendar />
             </LayoutWrapper>
             <GlobalStyles />
         </>
