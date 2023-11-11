@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GlobalStyles from '../../GlobalStyles';
-import { StyledTitle } from './app.styled';
+import { StyledHiddenTitle, StyledBackgroundPattern } from './app.styled';
 
 import Header from '../header/header';
 import IntroSection from '../introSection/introSection';
@@ -12,7 +12,8 @@ import Footer from '../footer/footer';
 const App = () => {
     return (
         <>
-            <StyledTitle>Secret Календарь</StyledTitle>
+            <StyledHiddenTitle>Secret Календарь</StyledHiddenTitle>
+            <StyledBackgroundPattern />
             <Header />
             <LayoutWrapper>
                 <IntroSection />
