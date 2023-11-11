@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
 	body {
 		font-family: "Source Sans Pro", sans-serif;
 		color: ${colors.majorWhite};
+		background-color: ${colors.majorBlack};
 	}
 
 	a {
