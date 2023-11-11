@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StyledDescription, StyledSecret, StyledSection, StyledTitle } from './introSection.styles';
-import Secret from '../../images/icons/secret.svg';
+import Secret from '../../images/icons/common/secret.svg';
 
 const IntroSection = () => {
     return (

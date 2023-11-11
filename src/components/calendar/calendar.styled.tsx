@@ -39,4 +39,5 @@ export const StyledImageWrapper = styled.div<{isRounded: boolean}>`
 export const StyledImage = styled.img`
     display: block;
     width: 100%;
+    user-select: none;
 `
