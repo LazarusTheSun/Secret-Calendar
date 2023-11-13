@@ -27,7 +27,7 @@ export const StyledBackgroundPattern = styled.div`
     height: 100vh;
     background: ${colors.majorBlack} no-repeat center top / cover;
 
-    @media screen and (min-width: ${breakpoints.m}px) {
+    /* @media screen and (min-width: ${breakpoints.m}px) {
         background-image: url(${patternDesktop});
     }
 
@@ -37,5 +37,5 @@ export const StyledBackgroundPattern = styled.div`
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
         background-image: url(${patternMobile});
-    }
+    } */
 `;

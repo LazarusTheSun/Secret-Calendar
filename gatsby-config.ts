@@ -10,6 +10,7 @@ const config: GatsbyConfig = {
 	plugins: [
 		"gatsby-plugin-styled-components",
 		"gatsby-plugin-react-svg",
+		"gatsby-plugin-smoothscroll",
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {

@@ -5,6 +5,7 @@ import breakpoints from '../../constants/breakpoints.json';
 export const StyledCalendar = styled.div<{rows: number; columns: number}>`
     display: grid;
     align-items: flex-start;
+    margin-top: 100px;
 
     ${({rows, columns}) => `
         grid-template-columns: repeat(${columns}, 1fr);
@@ -25,6 +26,13 @@ export const StyledTile = styled.div<{row: string; column: string;}>`
         grid-column: ${column};
         grid-row: ${row};
     `}
+
+    /* transition: transform 0.2s ease-in-out;
+    @media (hover) {
+        &:hover {
+            transform: scale(1.15);
+        }
+    } */
 `;
 
 export const StyledImageWrapper = styled.div<{isRounded: boolean}>`

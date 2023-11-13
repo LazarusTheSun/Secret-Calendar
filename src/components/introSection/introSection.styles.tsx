@@ -119,9 +119,10 @@ export const StyledDescription = styled.div`
     }
 `;
 
-export const StyledLink = styled.a`
+export const StyledLearnMore = styled.div`
     display: inline-block;
     text-decoration: underline;
+    cursor: pointer;
 
     @media screen and (min-width: ${breakpoints.s}px) {
         margin-left: 5px;

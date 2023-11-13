@@ -1,13 +1,15 @@
 import React from 'react';
 import Media from 'react-media';
 
+import scrollTo from 'gatsby-plugin-smoothscroll';
+
 import {
     StyledDescription,
     StyledFragment,
-    StyledLink,
     StyledSecret,
     StyledSection,
-    StyledTitle
+    StyledTitle,
+    StyledLearnMore,
 } from './introSection.styles';
 import Secret from '../../images/icons/common/secret.svg';
 
@@ -35,9 +37,9 @@ const IntroSection = () => {
                                 </p>
                                 <p>
                                     Используй промокоды при заказе и получи ещё больше — шанс выиграть один из 10 сертификатов на <StyledFragment>5 000 рублей</StyledFragment> для заказа в Secret Kitchen.
-                                    <StyledLink>
+                                    <StyledLearnMore onClick={() => {scrollTo("#info")}}>
                                         Подробнее
-                                    </StyledLink>
+                                    </StyledLearnMore>
                                 </p>
                             </StyledDescription>
                         )}
@@ -46,9 +48,9 @@ const IntroSection = () => {
                                 <p>Каждый день <StyledFragment>с 1 по 29 декабря</StyledFragment> тебя ждёт новый подарок. Открывай карточки и получай сюрприз.</p>
                                 <p>
                                     А еще ты можешь выиграть сертификат <br />на <StyledFragment>5 000 рублей</StyledFragment> для заказа в Secret Kitchen.
-                                    <StyledLink>
+                                    <StyledLearnMore onClick={() => {scrollTo("#info")}}>
                                         Подробнее
-                                    </StyledLink>
+                                    </StyledLearnMore>
                                 </p>
                             </StyledDescription>
                         )}
