@@ -6,7 +6,6 @@ export const StyledSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
 
     @media screen and (min-width: ${breakpoints.m}px) {
         margin-top: 64px;
@@ -85,30 +84,56 @@ export const StyledSecret = styled.div`
     }
 `;
 
-export const StyledDescription = styled.p`
+export const StyledDescription = styled.div`
+    max-width: 644px;
     text-align: center;
+
+    & > * + * {
+        margin-top: 1.2em;
+    }
 
     @media screen and (min-width: ${breakpoints.m}px) {
         margin-top: 40px;
-        font-size: 24px;
-        line-height: 30px;
     }
 
     @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
         margin-top: 32px;
-        font-size: 20px;
-        line-height: 25px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        font-size: 14px;
+        line-height: 18px;
     }
 
     @media screen and (min-width: ${breakpoints.xxs}px) and (max-width: ${breakpoints.s - 1}px) {
         margin-top: 24px;
-        font-size: 14px;
-        line-height: 18px;
     }
     
     @media screen and (max-width: ${breakpoints.xxs - 1}px) {
         margin-top: 12px;
-        font-size: 12px;
-        line-height: 15px;
+    }
+`;
+
+export const StyledLink = styled.a`
+    display: inline-block;
+    text-decoration: underline;
+
+    @media screen and (min-width: ${breakpoints.s}px) {
+        margin-left: 5px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin: 0 auto;
+    }
+`;
+
+export const StyledFragment = styled.span`
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        font-weight: 700;
     }
 `;
