@@ -22,20 +22,24 @@ export const StyledBackgroundPattern = styled.div`
     position: fixed;
     z-index: -1;
     top: 0;
-    left: 0;
-    width: 100vw;
     height: 100vh;
     background: ${colors.majorBlack} no-repeat center top / cover;
 
-    /* @media screen and (min-width: ${breakpoints.m}px) {
+    @media screen and (min-width: ${breakpoints.xl}px) {
+        left: calc(50% - 1500px);
+        width: 3000px;
         background-image: url(${patternDesktop});
     }
 
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl - 1}px) {
+        left: calc(50% - 1000px);
+        width: 2000px;
         background-image: url(${patternTablet});
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
+        left: calc(50% - 800px);
+        width: 1600px;
         background-image: url(${patternMobile});
-    } */
+    }
 `;
