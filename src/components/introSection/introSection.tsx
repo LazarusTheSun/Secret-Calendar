@@ -36,7 +36,7 @@ const IntroSection = () => {
                                     Каждый день <StyledFragment>с 1 по 29 декабря</StyledFragment> тебя ждёт новый подарок. Открывай карточки и получай сюрприз, который мы приготовили в этот день.
                                 </p>
                                 <p>
-                                    Используй промокоды при заказе и получи ещё больше — шанс выиграть один из 10 сертификатов на <StyledFragment>5 000 рублей</StyledFragment> для заказа в Secret Kitchen.
+                                    Используй промокоды при заказе и получи ещё больше — шанс выиграть один из 10 сертификатов на <StyledFragment>5 000 рублей</StyledFragment> для заказа в Secret Kitchen.
                                     <StyledLearnMore onClick={() => {scrollTo("#info")}}>
                                         Подробнее
                                     </StyledLearnMore>

@@ -4,5 +4,7 @@
   "minorBlack": "#212121",
   "majorGrey": "#ACACAC",
   "minorGray": "#373737",
-  "majorGreyDarken": "#3C3C3C"
+  "majorGreyDarken": "#3C3C3C",
+  "majorYellow": "#FFC148",
+  "majorYellowDarker": "#E4AC3C"
 }

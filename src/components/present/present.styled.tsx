@@ -5,30 +5,15 @@ import colors from '../../constants/colors.json';
 
 const copyMixin = css`
     margin-top: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 280px;
+    width: min-content;
+    height: 90px;
     font-weight: 500;
-    letter-spacing: 0.06em;
-    color: ${colors.majorWhite};
-    text-transform: uppercase;
     border: 1px dashed ${colors.majorWhite};
     border-radius: 16px;
-
-    @media screen and (min-width: ${breakpoints.xl + 1}px) {
-        padding: 12px 30px 16px;
-        font-size: 50px;
-        line-height: 62px;
-    }
-
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl}px) {
-        padding: 8px 40px 20px;
-        font-size: 64px;
-        line-height: 78px;
-    }
-
-    @media screen and (max-width: ${breakpoints.s - 1}px) {
-        padding: 13px 55px 29px;
-        font-size: 40px;
-        line-height: 48px;
-    }
+    text-transform: uppercase;
 `;
 
 export const StyledSection = styled.section`
@@ -127,7 +112,12 @@ export const StyledFragment = styled.span`
 
 export const StyledPromocode = styled.button`
     position: relative;
+    padding-bottom: 6px;
     font-family: inherit;
+    font-size: 44px;
+    line-height: 55px;
+    letter-spacing: 0.06em;
+    color: ${colors.majorWhite};
     background: none;
     cursor: pointer;
     user-select: none;
@@ -152,8 +142,9 @@ export const StyledPromocode = styled.button`
         left: 0;
         width: 100%;
         height: 100%;
-        font-size: 20px;
-        letter-spacing: normal;
+        font-size: 28px;
+        line-height: 33px;
+        letter-spacing: 0.16em;
         border-radius: 16px;
         opacity: 0;
         background-color: ${colors.majorBlack};
@@ -162,7 +153,17 @@ export const StyledPromocode = styled.button`
 `;
 
 export const StyledCopied = styled.p`
-    ${copyMixin};  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 0.16em;
+    letter-spacing: normal;
+    border-radius: 16px;
+    opacity: 0.6;
+
+    ${copyMixin};
 `;
 
 export const StyledImageWrapper = styled.div`
@@ -177,4 +178,37 @@ export const StyledImageWrapper = styled.div`
 
 export const StyledImage = styled.img`
     width: 100%;  
+`;
+
+export const StyledLink = styled.a`
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 20px;
+    color: ${colors.majorBlack};
+    border-radius: 30px;
+    background-color: ${colors.majorYellow};
+
+    @media (hover) {
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: ${colors.majorYellowDarker};
+        }
+    }
+
+    @media screen and (max-width: ${breakpoints.l}px) {
+        width: 280px;
+    }
+
+    @media screen and (min-width: ${breakpoints.l + 1}px) {
+        margin-top: 44px;
+    } 
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.l}px) {
+        margin-top: 24px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin-top: 32px;
+    }
 `;
