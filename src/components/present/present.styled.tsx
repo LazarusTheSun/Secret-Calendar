@@ -20,11 +20,11 @@ export const StyledSection = styled.section`
     display: flex;
     align-items: center;
 
-    @media screen and (min-width: ${breakpoints.l + 1}px) {
+    @media screen and (min-width: ${breakpoints.xl}px) {
         justify-content: space-between;
     }
     
-    @media screen and (max-width: ${breakpoints.l}px) {
+    @media screen and (max-width: ${breakpoints.xl - 1}px) {
         flex-direction: column-reverse;
     }
 `;
@@ -33,11 +33,11 @@ export const StyledContent = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: ${breakpoints.l + 1}px) {
+    @media screen and (min-width: ${breakpoints.xl}px) {
         align-items: flex-start;
     }
 
-    @media screen and (max-width: ${breakpoints.l}px) {
+    @media screen and (max-width: ${breakpoints.xl - 1}px) {
         align-items: center;
         text-align: center;
     }
@@ -45,7 +45,6 @@ export const StyledContent = styled.div`
 
 export const StyledLabel = styled.div`
     padding: 4px 20px 8px;
-    font-family: "FUD Grotesk", sans-serif;
     font-size: 20px;
     line-height: 24px;
     font-weight: 700;
@@ -114,8 +113,8 @@ export const StyledPromocode = styled.button`
     position: relative;
     padding-bottom: 6px;
     font-family: inherit;
-    font-size: 44px;
-    line-height: 55px;
+    font-size: 36px;
+    line-height: 45px;
     letter-spacing: 0.06em;
     color: ${colors.majorWhite};
     background: none;
@@ -159,7 +158,6 @@ export const StyledCopied = styled.p`
     font-size: 28px;
     line-height: 33px;
     letter-spacing: 0.16em;
-    letter-spacing: normal;
     border-radius: 16px;
     opacity: 0.6;
 

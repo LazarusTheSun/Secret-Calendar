@@ -56,14 +56,14 @@ const Present = ({
                     Ricers 1.1 <br /> со скидкой 15%
                 </StyledTitle>
                 <StyledInfo>
-                    Для получения подарка используй этот промокод. <br /> Он работает только <StyledFragment>Сегодня</StyledFragment>.
+                    Для получения подарка используй этот промокод. <br /> Он работает только <StyledFragment>сегодня</StyledFragment>.
                 </StyledInfo>
                 {
                     isCopied
                         ? <StyledCopied>Скопировано</StyledCopied>
                         : <StyledPromocode onClick={handleCopy} type="button">{promcodeTemp}</StyledPromocode>
                 }
-                <StyledLink href="https://secret-kitchen.ru" target="_blank">Заказать</StyledLink>
+                <StyledLink href="https://secret-kitchen.ru/?utm_source=new_year_24&utm_medium=site&utm_campaign=new_year_24" target="_blank">Заказать</StyledLink>
             </StyledContent>
             <StyledImageWrapper>
                 <StyledImage src={present1} alt="Подарок" />

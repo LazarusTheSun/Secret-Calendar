@@ -18,13 +18,13 @@ export const StyledSection = styled.section`
 export const StyledWrapper = styled.div`
     display: grid;
 
-    @media screen and (min-width: ${breakpoints.l + 1}px) {
+    @media screen and (min-width: ${breakpoints.xl}px) {
         grid-template-columns: repeat(2, 1fr);
         align-items: flex-start;
         grid-gap: 24px;
     }
 
-    @media screen and (max-width: ${breakpoints.l}px) {
+    @media screen and (max-width: ${breakpoints.xl - 1}px) {
         grid-template-columns: 100%;
         grid-gap: 32px;
     }
@@ -91,13 +91,13 @@ export const StyledColumn = styled.div`
     display: flex;
     align-items: flex-start;
 
-    @media screen and (min-width: ${breakpoints.l + 1}px) {
+    @media screen and (min-width: ${breakpoints.xl}px) {
         & > * + * {
             margin-left: 12px;
         }
     }
 
-    @media screen and (max-width: ${breakpoints.l}px) {
+    @media screen and (max-width: ${breakpoints.xl - 1}px) {
         flex-direction: column;
 
         & > * + * {

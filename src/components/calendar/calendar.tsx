@@ -10,8 +10,8 @@ const Calendar = () => {
     return (
         <Media
             queries={{
-                large: `(min-width: ${breakpoints.l + 1}px)`,
-                small: `(max-width: ${breakpoints.l}px)`,
+                large: `(min-width: ${breakpoints.xl}px)`,
+                small: `(max-width: ${breakpoints.xl - 1}px)`,
             }}
         >
             {mathes => (
