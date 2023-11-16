@@ -15,8 +15,54 @@ import VkLogo from '../../images/icons/social/vk-icon.svg';
 
 import AppStoreLogo from '../../images/icons/app-markets/apple.svg';
 import GooglePlayLogo from '../../images/icons/app-markets/google.svg';
+import { useGetDeviceType } from '../../hooks/useGetDeviceType';
 
 const Footer = () => {
+    const device = useGetDeviceType();
+
+    const getStores = () => {
+        if (device === 'desktop') {
+            return (
+                <StyledMenu>
+                    <li>
+                        <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
+                            <AppStoreLogo />
+                        </StyledAppMarketLink>
+                    </li>
+                    <li>
+                        <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
+                            <GooglePlayLogo />
+                        </StyledAppMarketLink>
+                    </li>
+                </StyledMenu>
+            );
+        }
+
+        if (device === 'android') {
+            return (
+                <StyledMenu>
+                    <li>
+                        <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
+                            <GooglePlayLogo />
+                        </StyledAppMarketLink>
+                    </li>
+                </StyledMenu>
+            )
+        }
+
+        if (device === 'ios') {
+            return (
+                <StyledMenu>
+                    <li>
+                        <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
+                            <AppStoreLogo />
+                        </StyledAppMarketLink>
+                    </li>
+                </StyledMenu>
+            )
+        }
+    }
+
     return (
         <StyledFooter>
             <StyledFooterWrapper>
@@ -46,18 +92,7 @@ const Footer = () => {
                         </StyledMenu>
                     </nav>
                     <nav>
-                        <StyledMenu>
-                            <li>
-                                <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
-                                    <AppStoreLogo />
-                                </StyledAppMarketLink>
-                            </li>
-                            <li>
-                                <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
-                                    <GooglePlayLogo />
-                                </StyledAppMarketLink>
-                            </li>
-                        </StyledMenu>
+                        {getStores()}
                     </nav>
                 </StyledWrapper>
             </StyledFooterWrapper>
