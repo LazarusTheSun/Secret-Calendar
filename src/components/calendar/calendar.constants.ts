@@ -14,7 +14,7 @@ export const GRID_LAYOUT_CONFIG = {
 
 export const GRID_TILES_CONFIG = [
     {
-        index: 1,
+        id: 1,
         largeGrid: {
             column: "1 / 2",
             row: "1 / 3",
@@ -30,7 +30,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 2,
+        id: 2,
         largeGrid: {
             column: "2 / 4",
             row: "1 / 2",
@@ -46,7 +46,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 3,
+        id: 3,
         largeGrid: {
             column: "2 / 4",
             row: "2 / 3",
@@ -62,7 +62,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 4,
+        id: 4,
         largeGrid: {
             column: "4 / 5",
             row: "1 / 2",
@@ -78,7 +78,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 5,
+        id: 5,
         largeGrid: {
             column: "4 / 5",
             row: "2 / 3",
@@ -94,7 +94,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 6,
+        id: 6,
         largeGrid: {
             column: "5 / 6",
             row: "1 / 3",
@@ -110,7 +110,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 7,
+        id: 7,
         largeGrid: {
             column: "6 / 8",
             row: "1 / 2",
@@ -126,7 +126,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 8,
+        id: 8,
         largeGrid: {
             column: "7 / 8",
             row: "2 / 3",
@@ -142,7 +142,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 9,
+        id: 9,
         largeGrid: {
             column: "8 / 9",
             row: "2 / 3",
@@ -158,7 +158,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 10,
+        id: 10,
         largeGrid: {
             column: "6 / 7",
             row: "2 / 3",
@@ -174,7 +174,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 11,
+        id: 11,
         largeGrid: {
             column: "8 / 9",
             row: "1 / 2",
@@ -190,7 +190,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 12,
+        id: 12,
         largeGrid: {
             column: "1 / 2",
             row: "3 / 5",
@@ -206,7 +206,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 13,
+        id: 13,
         largeGrid: {
             column: "2 / 3",
             row: "3 / 4",
@@ -222,7 +222,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 14,
+        id: 14,
         largeGrid: {
             column: "3 / 4",
             row: "3 / 4",
@@ -238,7 +238,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 15,
+        id: 15,
         largeGrid: {
             column: "5 / 7",
             row: "3 / 4",
@@ -254,7 +254,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 16,
+        id: 16,
         largeGrid: {
             column: "7 / 8",
             row: "3 / 4",
@@ -270,7 +270,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 17,
+        id: 17,
         largeGrid: {
             column: "8 / 9",
             row: "3 / 5",
@@ -286,7 +286,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 18,
+        id: 18,
         largeGrid: {
             column: "2 / 4",
             row: "4 / 5",
@@ -302,7 +302,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 19,
+        id: 19,
         largeGrid: {
             column: "4 / 5",
             row: "4 / 6",
@@ -318,7 +318,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 20,
+        id: 20,
         largeGrid: {
             column: "3 / 4",
             row: "5 / 6",
@@ -334,7 +334,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 21,
+        id: 21,
         largeGrid: {
             column: "5 / 6",
             row: "4 / 5",
@@ -350,7 +350,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 22,
+        id: 22,
         largeGrid: {
             column: "5 / 6",
             row: "5 / 6",
@@ -366,7 +366,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 23,
+        id: 23,
         largeGrid: {
             column: "6 / 7",
             row: "4 / 6",
@@ -382,7 +382,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 24,
+        id: 24,
         largeGrid: {
             column: "7 / 8",
             row: "4 / 5",
@@ -398,7 +398,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 25,
+        id: 25,
         largeGrid: {
             column: "7 / 8",
             row: "5 / 6",
@@ -414,7 +414,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 26,
+        id: 26,
         largeGrid: {
             column: "8 / 9",
             row: "5 / 6",
@@ -430,7 +430,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 27,
+        id: 27,
         largeGrid: {
             column: "3 / 5",
             row: "6 / 7",
@@ -446,7 +446,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 28,
+        id: 28,
         largeGrid: {
             column: "5 / 6",
             row: "6 / 7",
@@ -462,7 +462,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 29,
+        id: 29,
         largeGrid: {
             column: "6 / 7",
             row: "6 / 7",
@@ -478,7 +478,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 30,
+        id: 30,
         largeGrid: {
             column: "7 / 9",
             row: "6 / 7",
@@ -494,7 +494,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 31,
+        id: 31,
         largeGrid: {
             column: "1 / 3",
             row: "5 / 7",
@@ -510,7 +510,7 @@ export const GRID_TILES_CONFIG = [
         }
     },
     {
-        index: 32,
+        id: "placeholder",
         largeGrid: {
             column: "4 / 5",
             row: "3 / 4",

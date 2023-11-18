@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../constants/colors.json';
 import breakpoints from '../../constants/breakpoints.json';
 
-import patternDesktop from '../../images/background/background-pattern-desk.jpg';
+import patternDesktop from '../../images/background/background-pattern-desktop.jpg';
 import patternTablet from '../../images/background/background-pattern-tablet.jpg';
 import patternMobile from '../../images/background/background-pattern-mob.jpg';
 

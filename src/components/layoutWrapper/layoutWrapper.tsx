@@ -3,7 +3,7 @@ import { StyledLayoutWrapper } from './layoutWrapper.styled';
 
 export const LayoutWrapper = ({
     children,
-}: {children: JSX.Element | JSX.Element[]}) => {
+}: {children: any}) => {
     return (
         <StyledLayoutWrapper>
             {children}

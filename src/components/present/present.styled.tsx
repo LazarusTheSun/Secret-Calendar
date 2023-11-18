@@ -1,7 +1,9 @@
-import styled, {css} from "styled-components";
+import styled, {css, keyframes} from "styled-components";
 
 import breakpoints from '../../constants/breakpoints.json';
 import colors from '../../constants/colors.json';
+import border from '../../images/icons/common/border.png';
+import type { TVisibility } from "../app/app.types";
 
 const copyMixin = css`
     margin-top: 24px;
@@ -12,18 +14,70 @@ const copyMixin = css`
     height: 90px;
     font-weight: 500;
     border: 1px dashed ${colors.majorWhite};
+    border-image: url(${border}) 1;
     border-radius: 16px;
     text-transform: uppercase;
 `;
 
-export const StyledSection = styled.section`
+const fadeOut = keyframes`
+    0% {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+    99% {
+        transform: translateY(30%);
+        opacity: 0;
+    }
+    100% {
+        display: none;
+    }
+`;
+
+const fadeIn = keyframes`
+    0% {
+        display: none;
+        transform: translateY(30%);
+        opacity: 0;
+    }
+    1% {
+        display: block;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`;
+
+const fadeOutHelper = css`
+    animation: ${fadeOut} 1s ease-in-out 1 forwards;
+`;
+
+const fadeInHelper = css`
+    animation: ${fadeIn} 1s ease-in-out 1 forwards;
+`;
+
+export const StyledSection = styled.section<{presentVisibility: TVisibility}>`
+    ${({presentVisibility}) => {
+        switch(presentVisibility) {
+            case "visible":
+                return fadeInHelper;
+            case "hidden":
+                return fadeOutHelper;
+            default:
+                return "";
+        }
+    }}
+`;
+
+export const StyledPresent = styled.div`
     display: flex;
     align-items: center;
 
     @media screen and (min-width: ${breakpoints.xl}px) {
         justify-content: space-between;
     }
-    
+
     @media screen and (max-width: ${breakpoints.xl - 1}px) {
         flex-direction: column-reverse;
     }
@@ -44,9 +98,9 @@ export const StyledContent = styled.div`
 `;
 
 export const StyledLabel = styled.div`
-    padding: 4px 20px 8px;
-    font-size: 20px;
-    line-height: 24px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 17px;
     font-weight: 700;
     color: ${colors.majorBlack};
     text-transform: uppercase;
@@ -165,6 +219,8 @@ export const StyledCopied = styled.p`
 `;
 
 export const StyledImageWrapper = styled.div`
+    cursor: pointer;
+
     @media screen and (min-width: ${breakpoints.l + 1}px) {
         width: 740px;
     }

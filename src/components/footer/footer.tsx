@@ -20,17 +20,19 @@ import { useGetDeviceType } from '../../hooks/useGetDeviceType';
 const Footer = () => {
     const device = useGetDeviceType();
 
+    const link = "https://secretkitchen.onelink.me/38De/wao7fd0s";
+
     const getStores = () => {
         if (device === 'desktop') {
             return (
                 <StyledMenu>
                     <li>
-                        <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
+                        <StyledAppMarketLink href={link} target="_blank">
                             <AppStoreLogo />
                         </StyledAppMarketLink>
                     </li>
                     <li>
-                        <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
+                        <StyledAppMarketLink href={link} target="_blank">
                             <GooglePlayLogo />
                         </StyledAppMarketLink>
                     </li>
@@ -42,7 +44,7 @@ const Footer = () => {
             return (
                 <StyledMenu>
                     <li>
-                        <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
+                        <StyledAppMarketLink href={link} target="_blank">
                             <GooglePlayLogo />
                         </StyledAppMarketLink>
                     </li>
@@ -54,7 +56,7 @@ const Footer = () => {
             return (
                 <StyledMenu>
                     <li>
-                        <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
+                        <StyledAppMarketLink href={link} target="_blank">
                             <AppStoreLogo />
                         </StyledAppMarketLink>
                     </li>

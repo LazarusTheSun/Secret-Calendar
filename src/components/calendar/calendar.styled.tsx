@@ -20,32 +20,3 @@ export const StyledCalendar = styled.div<{rows: number; columns: number}>`
         grid-gap: 6px;
     }
 `;
-
-export const StyledTile = styled.div<{row: string; column: string;}>`
-    ${({row, column}) => `
-        grid-column: ${column};
-        grid-row: ${row};
-    `}
-
-    /* transition: transform 0.2s ease-in-out;
-    @media (hover) {
-        &:hover {
-            transform: scale(1.15);
-        }
-    } */
-`;
-
-export const StyledImageWrapper = styled.div<{isRounded: boolean}>`
-    width: 100%;
-
-    ${({isRounded}) => isRounded && `
-        overflow: hidden;
-        border-radius: 16px;
-    `}
-`
-
-export const StyledImage = styled.img`
-    display: block;
-    width: 100%;
-    user-select: none;
-`

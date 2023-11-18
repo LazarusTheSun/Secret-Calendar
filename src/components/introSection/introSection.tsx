@@ -1,30 +1,30 @@
 import React from 'react';
-import Media from 'react-media';
-
 import scrollTo from 'gatsby-plugin-smoothscroll';
 
 import {
     StyledDescription,
-    StyledFragment,
     StyledSecret,
     StyledSection,
     StyledTitle,
     StyledLearnMore,
-} from './introSection.styles';
+} from './introSection.styled';
+
 import Secret from '../../images/icons/common/secret.svg';
+import { IIntroState } from '../app/app.types';
 
-import breakpoints from '../../constants/breakpoints.json';
-
-const IntroSection = () => {
+const IntroSection = ({
+    presentVisibility,
+    descriptionVisiblity
+}: IIntroState) => {
     return (
         <StyledSection>
-            <StyledTitle>
-                <StyledSecret>
+            <StyledTitle presentVisibility={presentVisibility}>
+                <StyledSecret presentVisibility={presentVisibility}>
                     <Secret />
                 </StyledSecret>
                 Календарь
             </StyledTitle>
-            <StyledDescription>
+            <StyledDescription descriptionVisiblity={descriptionVisiblity}>
                 <p>
                     Каждый день с 1 по 29 декабря тебя ждёт новый подарок. Открывай карточки и получай сюрприз, который мы приготовили в этот день.
                     <StyledLearnMore onClick={() => {scrollTo("#info")}}>

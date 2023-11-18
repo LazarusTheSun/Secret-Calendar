@@ -6,7 +6,7 @@ import LogoDesktop from '../../images/logo/logo.svg';
 
 const Header = () => {
     return (
-        <StyledHeader>
+        <StyledHeader id="header">
             <StyledHeaderWrapper>
                 <StyledLogoWrapper href="https://promo.secret-kitchen.ru" target="_blank">
                     <LogoDesktop />

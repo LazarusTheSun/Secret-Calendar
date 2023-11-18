@@ -5,5 +5,5 @@ export const hexToRgb = (hex: string, alpha?: number): string => {
 
     const rgb = `${parseInt(r, 16)}, ${parseInt(g, 16)}, ${parseInt(b, 16)}`;
 
-    return alpha ? `rgba(${rgb}, ${alpha})` : `rgb(${rgb})`;
+    return typeof alpha === 'number' ? `rgba(${rgb}, ${alpha})` : `rgb(${rgb})`;
 }

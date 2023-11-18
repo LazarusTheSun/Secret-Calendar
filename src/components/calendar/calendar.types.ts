@@ -1,17 +1,7 @@
-export interface ITile {
-    index: number;
-    largeGrid: {
-        column: string;
-        row: string;
-    },
-    smallGrid: {
-        column: string;
-        row: string;
-    },
-    isRounded: boolean;
-    images: {
-        large: string;
-        medium: string;
-        small: string;
-    }
+import { IIntroState, TVisibility } from "../app/app.types";
+
+export interface ICalendar {
+    setIntroState: React.Dispatch<React.SetStateAction<IIntroState>>
+    presentVisibility: TVisibility;
+    setCurrentPresent: React.Dispatch<React.SetStateAction<number | null>>;
 }
