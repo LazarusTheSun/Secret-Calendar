@@ -81,9 +81,8 @@ export const StyledIconWrapper = styled.div<{width: number; height: number;}>`
         height: ${height}px;
     `}
 
-    & > svg {
+    & > img {
         width: 100%;
-        height: 100%;
     }
 `
 

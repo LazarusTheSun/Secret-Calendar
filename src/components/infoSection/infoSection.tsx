@@ -27,7 +27,9 @@ const InfoSection = () => {
                     </StyledDescription>
                     <StyledInfo>
                             <StyledInfoWrapper>
-                                <StyledIconWrapper width={24} height={24}>{DATA.conditions.icon}</StyledIconWrapper>
+                                <StyledIconWrapper width={24} height={24}>
+                                    <img src={DATA.conditions.icon} alt="Эмодзи" />
+                                </StyledIconWrapper>
                                 <div>
                                     <StyledParagraph weight={700}>{DATA.conditions.infoTitle}</StyledParagraph>
                                     <StyledParagraph>{DATA.conditions.infoText}</StyledParagraph>
@@ -36,7 +38,9 @@ const InfoSection = () => {
                     </StyledInfo>
                 </StyledContentWrapper>
                 <StyledColumn>
-                    <StyledIconWrapper height={80} width={80}>{DATA.about.icon}</StyledIconWrapper>
+                    <StyledIconWrapper height={80} width={80}>
+                        <img src={DATA.about.icon} alt="Ель" />
+                    </StyledIconWrapper>
                     <StyledContentWrapper>
                         <StyledColumnTitle>{DATA.about.title}</StyledColumnTitle>
                         <StyledDescription>

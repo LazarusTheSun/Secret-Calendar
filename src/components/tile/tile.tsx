@@ -49,6 +49,7 @@ const Tile = ({
                 setState("active");
             }
         }
+
     }, [presentVisibility]);
 
     const handleClick = () => {

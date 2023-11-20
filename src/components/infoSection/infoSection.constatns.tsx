@@ -1,19 +1,19 @@
 import React from 'react';
 
-import Emoji from '../../images/icons/common/emoji.svg';
-import EverGreen from '../../images/icons/common/evergreen.svg';
+import emoji from '../../images/icons/common/emoji.png';
+import everGreen from '../../images/icons/common/evergreen.png';
 
 export const DATA = {
     conditions: {
         title: "Условия акции",
         description: "Чтобы узнать, какой подарок тебя ждёт, нажми на календаре сегодняшнее число. Во всплывающем окне появится фото подарка или размер скидки, а также промокод и условия. Скопируй промокод или нажми на кнопку ЗАКАЗАТЬ.",
-        icon: <Emoji />,
+        icon: emoji,
         infoTitle: "Адвент-промокоды действуют только один день",
         infoText: "ты не можешь воспользоваться ни вчерашним, ни завтрашним предложением.",
     },
     about: {
         title: "Большой предновогодний розыгрыш Secret Kitchen",
-        icon: <EverGreen />,
+        icon: everGreen,
         description: [
             "Сделав заказ с использованием промокода из Адвент-календаря, ты автоматически примешь участие в большом предновогоднем розыгрыше Secret Kitchen. На кону 10 сертификатов по 5 000 рублей!",
             "Победителей определим 30 декабря с помощью рэндомайзера. В базу попадут ВСЕ заказы, поэтому чем чаще будешь использовать адвент-промокоды, тем выше шансы на победу.",

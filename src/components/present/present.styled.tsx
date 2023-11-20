@@ -58,6 +58,8 @@ const fadeInHelper = css`
 `;
 
 export const StyledSection = styled.section<{presentVisibility: TVisibility}>`
+    opacity: 0;
+
     ${({presentVisibility}) => {
         switch(presentVisibility) {
             case "visible":
@@ -68,6 +70,18 @@ export const StyledSection = styled.section<{presentVisibility: TVisibility}>`
                 return "";
         }
     }}
+
+    @media screen and (min-width: ${breakpoints.m}px) {
+        margin-top: -8px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
+        margin-top: 8px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin-top: -8px;
+    }
 `;
 
 export const StyledPresent = styled.div`

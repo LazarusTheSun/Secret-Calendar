@@ -1,31 +1,25 @@
-import styled, {keyframes, css} from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 import breakpoints from '../../constants/breakpoints.json';
 import type { TVisibility } from '../app/app.types';
 
+import { ANIMATIONS_TIMINGS } from '../../constants/animations';
+
 const fadeOut = keyframes`
     0% {
-        display: block;
         transform: translateY(0);
         opacity: 1;
     }
-    99% {
+    100% {
         transform: translateY(-100%);
         opacity: 0;
-    }
-    100% {
-        display: none;
     }
 `;
 
 const fadeIn = keyframes`
     0% {
-        display: none;
         transform: translateY(-100%);
         opacity: 0;
-    }
-    1% {
-        display: block;
     }
     100% {
         transform: translateY(0);
@@ -47,11 +41,11 @@ export const StyledSection = styled.section`
     align-items: center;
 
     @media screen and (min-width: ${breakpoints.m}px) {
-        margin-top: 64px;
+        margin-top: 36px;
     }
 
     @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
-        margin-top: 130px;
+        margin-top: 90px;
     }
     
     @media screen and (max-width: ${breakpoints.s - 1}px) {
@@ -59,7 +53,7 @@ export const StyledSection = styled.section`
     }
 `;
 
-export const StyledTitle = styled.div<{presentVisibility: TVisibility;}>`
+export const StyledTitle = styled.div<{ presentVisibility: TVisibility; }>`
     position: relative;
     font-family: "FUD Grotesk", sans-serif;
     font-weight: 700;
@@ -68,9 +62,11 @@ export const StyledTitle = styled.div<{presentVisibility: TVisibility;}>`
     @media screen and (min-width: ${breakpoints.m}px) {
         font-size: 160px;
         line-height: 192px;
+        transition:
+            font-size ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+            line-height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
-        ${({presentVisibility}) => presentVisibility === "visible" && `
-            transition: font-size 0.2s ease-in-out, line-height 0.2s ease-in-out;
+        ${({ presentVisibility }) => presentVisibility === "visible" && `
             font-size: 140px;
             line-height: 168px;
         `}
@@ -90,9 +86,25 @@ export const StyledTitle = styled.div<{presentVisibility: TVisibility;}>`
         font-size: 40px;
         line-height: 48px;
     }
+
+    @media screen and (min-width: ${breakpoints.m}px) {
+        margin-bottom: 40px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
+        margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: ${breakpoints.xxs}px) and (max-width: ${breakpoints.s - 1}px) {
+        margin-bottom: 24px;
+    }
+
+    @media screen and (max-width: ${breakpoints.xxs - 1}px) {
+        margin-bottom: 12px;
+    }
 `;
 
-export const StyledSecret = styled.div<{presentVisibility: TVisibility;}>`
+export const StyledSecret = styled.div<{ presentVisibility: TVisibility; }>`
     position: absolute;
 
     & > svg {
@@ -105,12 +117,12 @@ export const StyledSecret = styled.div<{presentVisibility: TVisibility;}>`
         bottom: 58px;
         width: 380px;
         height: 189px;
+        transition:
+            width ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+            height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+            left ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
-        ${({presentVisibility}) => presentVisibility === "visible" && `
-            transition:
-                width 0.2s ease-in-out,
-                height 0.2s ease-in-out,
-                left 0.2s ease-in-out;
+        ${({ presentVisibility }) => presentVisibility === "visible" && `
             left: -111px;
             width: 262px;
             height: 144px;
@@ -139,16 +151,36 @@ export const StyledSecret = styled.div<{presentVisibility: TVisibility;}>`
     }
 `;
 
-export const StyledDescription = styled.div<{descriptionVisiblity: TVisibility;}>`
+export const StyledWrapper = styled.div<{ descriptionVisiblity: TVisibility; }>`
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    transition:
+        height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+`;
+
+export const StyledDescription = styled.div<{ descriptionVisiblity: TVisibility; }>`
     max-width: 644px;
     text-align: center;
 
-    ${({descriptionVisiblity}) => {
-        switch(descriptionVisiblity) {
+    ${({ descriptionVisiblity }) => {
+        switch (descriptionVisiblity) {
             case "visible":
-                return fadeInHelper;
+                return `
+                    transform: translateY(0%);
+                    opacity: 1;
+                    transition:
+                        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.4}ms,
+                        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+                `;
             case "hidden":
-                return fadeOutHelper;
+                return `
+                    transform: translateY(-100%);
+                    opacity: 0;
+                    transition:
+                        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.4}ms ease-in-out,
+                        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+                `;
             default:
                 return "";
         }
@@ -156,14 +188,6 @@ export const StyledDescription = styled.div<{descriptionVisiblity: TVisibility;}
 
     & > * + * {
         margin-top: 1.2em;
-    }
-
-    @media screen and (min-width: ${breakpoints.m}px) {
-        margin-top: 40px;
-    }
-
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
-        margin-top: 32px;
     }
 
     @media screen and (min-width: ${breakpoints.s}px) {
@@ -174,14 +198,6 @@ export const StyledDescription = styled.div<{descriptionVisiblity: TVisibility;}
     @media screen and (max-width: ${breakpoints.s - 1}px) {
         font-size: 14px;
         line-height: 18px;
-    }
-
-    @media screen and (min-width: ${breakpoints.xxs}px) and (max-width: ${breakpoints.s - 1}px) {
-        margin-top: 24px;
-    }
-    
-    @media screen and (max-width: ${breakpoints.xxs - 1}px) {
-        margin-top: 12px;
     }
 `;
 

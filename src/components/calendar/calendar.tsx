@@ -10,7 +10,7 @@ import { ICalendar } from './calendar.types';
 
 const Calendar = ({
     setIntroState,
-    isPresentShown,
+    presentVisibility,
     setCurrentPresent
 }: ICalendar) => {
     const date = new Date();
@@ -38,7 +38,7 @@ const Calendar = ({
                                         id={tile.id}
                                         timestamp={timestamp}
                                         setIntroState={setIntroState}
-                                        isPresentShown={isPresentShown}
+                                        presentVisibility={presentVisibility}
                                         setCurrentPresent={setCurrentPresent}
                                     />
                                 )
@@ -57,7 +57,7 @@ const Calendar = ({
                                         id={tile.id}
                                         timestamp={timestamp}
                                         setIntroState={setIntroState}
-                                        isPresentShown={isPresentShown}
+                                        presentVisibility={presentVisibility}
                                         setCurrentPresent={setCurrentPresent}
                                     />
                                 )

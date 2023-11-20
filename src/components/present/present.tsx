@@ -29,8 +29,6 @@ const Present = ({
 }: IPresent) => {
     const [isCopied, setIsCopied] = useState(false);
 
-    console.log(presentVisibility)
-
     const handleCopy = async () => {
         if (isCopied) {
             return;
