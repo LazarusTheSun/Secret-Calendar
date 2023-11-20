@@ -5,7 +5,7 @@ import breakpoints from '../../constants/breakpoints.json';
 
 import patternDesktop from '../../images/background/background-pattern-desktop.jpg';
 import patternTablet from '../../images/background/background-pattern-tablet.jpg';
-import patternMobile from '../../images/background/background-pattern-mob.jpg';
+import patternMobile from '../../images/background/background-pattern-mobile.jpg';
 
 export const StyledHiddenTitle = styled.h1`
     position: absolute;
