@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import scrollTo from 'gatsby-plugin-smoothscroll';
+import { Link } from 'react-scroll';
 
 import {
     StyledDescription,
@@ -27,7 +27,7 @@ const IntroSection = ({
 
             const descriptionHeight = description.offsetHeight;
 
-            if (presentVisibility === "hidden" || presentVisibility === "idle") {
+            if (["idle", "hidden"].includes(presentVisibility)) {
                 // because translateY has -100% value height and margin compensation is needed for hidden overflow;
                 wrapper.style.height = `${descriptionHeight * 2}px`;
                 wrapper.style.marginTop = `-${descriptionHeight}px`;
@@ -49,10 +49,13 @@ const IntroSection = ({
             <StyledWrapper ref={wrapperRef} descriptionVisiblity={descriptionVisiblity}>
                 <StyledDescription ref={descriptionRef} descriptionVisiblity={descriptionVisiblity}>
                     <p>
-                        Каждый день с 1 по 29 декабря тебя ждёт новый подарок. Открывай карточки и получай сюрприз, который мы приготовили в этот день.
-                        <StyledLearnMore onClick={() => {scrollTo("#info")}}>
-                            Подробнее
-                        </StyledLearnMore>
+                        Каждый день с 1 по 29 декабря тебя ждёт новый подарок.
+                        Открывай карточки и получай сюрприз, который мы приготовили в этот день.
+                        <Link to="info" smooth={true} duration={1000} isDynamic>
+                            <StyledLearnMore>
+                                Подробнее
+                            </StyledLearnMore>
+                        </Link>
                     </p>
                 </StyledDescription>
             </StyledWrapper>

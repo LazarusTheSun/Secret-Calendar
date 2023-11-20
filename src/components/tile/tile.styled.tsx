@@ -2,6 +2,7 @@ import styled, {css, keyframes} from "styled-components";
 
 import colors from '../../constants/colors.json';
 import { hexToRgb } from "../../utils/hexToRgb";
+import breakpoints from '../../constants/breakpoints.json';
 
 const move = keyframes`
     from {
@@ -89,8 +90,15 @@ export const StyledClickedWrapper = styled.div`
 `;
 
 export const StyledIconWrapper = styled.div`
-    width: 30px;
-    height: 30px;
+    @media screen and (min-width: ${breakpoints.s}px) {
+        width: 30px;
+        height: 30px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        width: 20px;
+        height: 20px;
+    }
 
     & > svg {
         width: 100%;
@@ -99,23 +107,30 @@ export const StyledIconWrapper = styled.div`
 `
 
 export const StyledClickedText = styled.div`
-    margin-top: 8px;
-    font-size: 20px;
-    line-height: 22px;
     letter-spacing: -0.02em;
     text-align: center;
     color: ${colors.majorBlack};
+
+    @media screen and (min-width: ${breakpoints.s}px) {
+        margin-top: 8px;
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin-top: 2px;
+        font-size: 12px;
+        line-height: 12px;
+    }
 `;
 
 export const StyledImageWrapper = styled.div<{isRounded?: boolean}>`
     width: 100%;
-    height: 100%;
 `;
 
 export const StyledImage = styled.img`
     display: block;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     object-position: center;
     user-select: none;
