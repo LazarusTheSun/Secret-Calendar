@@ -3,6 +3,7 @@ import styled, {css, keyframes} from "styled-components";
 import colors from '../../constants/colors.json';
 import { hexToRgb } from "../../utils/hexToRgb";
 import breakpoints from '../../constants/breakpoints.json';
+import { ANIMATIONS_TIMINGS } from "../../constants/animations";
 
 const move = keyframes`
     from {
@@ -13,7 +14,7 @@ const move = keyframes`
         transform: translateX(200%) rotate(45deg);
         left: 150%;
     }
-`
+`;
 
 const activeStateMixin = css`
     position: relative;
@@ -44,9 +45,31 @@ const activeStateMixin = css`
             transform: scale(1.15);
         }
     }
-`
+`;
 
-export const StyledTile = styled.div<{row: string; column: string; state: string; isRounded?: boolean;}>`
+const shake = keyframes`
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+`;
+
+const shakeHelper = css`
+    animation: ${shake} 1 ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out forwards;
+`;
+
+export const StyledTile = styled.div<{row: string; column: string; state: string; isRounded?: boolean; isDisabledClicked: boolean;}>`
     width: 100%;
     height: 100%;
 
@@ -77,6 +100,8 @@ export const StyledTile = styled.div<{row: string; column: string; state: string
             `
         }
     }}
+
+    ${({isDisabledClicked}) => isDisabledClicked && shakeHelper}
 `;
 
 export const StyledClickedWrapper = styled.div`

@@ -28,11 +28,12 @@ const IntroSection = ({
             const descriptionHeight = description.offsetHeight;
 
             if (["idle", "hidden"].includes(presentVisibility)) {
-                // because translateY has -100% value height and margin compensation is needed for hidden overflow;
+                // поскольку у translateY(-100%) и overflow: hidden нужна компенсация для height и margin 
                 wrapper.style.height = `${descriptionHeight * 2}px`;
                 wrapper.style.marginTop = `-${descriptionHeight}px`;
             } else {
                 wrapper.style.height = "0px";
+                wrapper.style.marginTop = `0px`;
             }
         }
 

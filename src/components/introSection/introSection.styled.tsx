@@ -1,39 +1,9 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled from 'styled-components';
 
 import breakpoints from '../../constants/breakpoints.json';
 import type { TVisibility } from '../app/app.types';
 
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
-
-const fadeOut = keyframes`
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-`;
-
-const fadeIn = keyframes`
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-`;
-
-const fadeOutHelper = css`
-    animation: ${fadeOut} 1s ease-in-out 1 forwards;
-`;
-
-const fadeInHelper = css`
-    animation: ${fadeIn} 1s ease-in-out 1 forwards;
-`;
 
 export const StyledSection = styled.section`
     display: flex;
@@ -155,8 +125,12 @@ export const StyledWrapper = styled.div<{ descriptionVisiblity: TVisibility; }>`
     display: flex;
     align-items: flex-end;
     overflow: hidden;
-    transition:
-        height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+
+    ${({descriptionVisiblity}) => descriptionVisiblity !== "idle" && `
+        transition:
+            height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+            margin-top ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+    `}
 `;
 
 export const StyledDescription = styled.div<{ descriptionVisiblity: TVisibility; }>`

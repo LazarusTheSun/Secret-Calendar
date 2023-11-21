@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react';
-import { animateScroll as scroll, Events, scrollSpy } from 'react-scroll';
+import { animateScroll as scroll, Events } from 'react-scroll';
 
 import {
     StyledTile,
@@ -13,6 +13,7 @@ import { ITile } from './tile.types';
 import { getTimestamp } from './tile.utils';
 
 import Prize from '../../images/icons/common/prize.svg';
+import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 
 const SCROLL_OPTIONS = {
     duration: 650,
@@ -31,6 +32,8 @@ const Tile = ({
     setCurrentPresent,
 }: ITile) => {
     const [state, setState] = useState("default");
+    const [isDisabledClicked, setIsDisabledClicked] = useState(false);
+    let clickedTimer = null;
 
     const tileTimestamp = getTimestamp(id);
 
@@ -81,6 +84,15 @@ const Tile = ({
         if (state === "active") {
             setState("clicked");
         }
+
+        if (["past", "default"].includes(state) && !isDisabledClicked) {
+            setIsDisabledClicked(true);
+
+            clickedTimer = setTimeout(() => {
+                clickedTimer = null;
+                setIsDisabledClicked(false);
+            }, ANIMATIONS_TIMINGS.baseTransitionTime);
+        }
     };
 
     return (
@@ -90,6 +102,7 @@ const Tile = ({
             state={state}
             onClick={handleClick}
             isRounded={isRounded}
+            isDisabledClicked={isDisabledClicked}
         >
             {state === "clicked" ? (
                 <StyledClickedWrapper>

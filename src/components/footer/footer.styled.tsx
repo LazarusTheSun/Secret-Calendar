@@ -99,17 +99,9 @@ export const StyledWrapper = styled.div`
         }
     }
 
-    @media screen and (min-width: ${breakpoints.xs}px) and (max-width: ${breakpoints.s - 1}px) {
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
         & > * + * {
             margin-left: 16px;
-        }
-    }
-
-    @media screen and (max-width: ${breakpoints.xs - 1}px) {
-        flex-direction: column-reverse;
-
-        & > *:first-child {
-            margin-top: 16px;
         }
     }
 `;
