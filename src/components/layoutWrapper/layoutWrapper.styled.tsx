@@ -10,7 +10,7 @@ export const StyledLayoutWrapper = styled.div`
     }
 
     @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl - 1}px) {
-        max-width: 508px;
+        max-width: 580px;
     }
     
     @media screen and (min-width: ${breakpoints.xxs}px) and (max-width: ${breakpoints.s - 1}px) {

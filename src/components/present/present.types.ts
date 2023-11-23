@@ -1,10 +1,10 @@
-import { IIntroState, TVisibility } from "../app/app.types";
+import { IAppState } from "../app/app.types";
 
 export interface IPresent {
-    title: JSX.Element;
+    title: string;
     promocode: string;
     imageSrc: string;
-    setIntroState: React.Dispatch<React.SetStateAction<IIntroState>>
-    setCurrentPresent: React.Dispatch<React.SetStateAction<number | null>>;
-    presentVisibility: TVisibility;
+    setAppState: React.Dispatch<React.SetStateAction<IAppState>>
+    setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
+    setActionResultBLockHeight: React.Dispatch<React.SetStateAction<number>>;
 }

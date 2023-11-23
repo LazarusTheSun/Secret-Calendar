@@ -123,7 +123,7 @@ export const StyledSocialLink = styled.a`
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background-color: ${colors.majorGreyDarken};
+    background-color: ${colors.majorGreyDarker};
 
     & > svg {
         width: 20px;

@@ -9,13 +9,12 @@ import Tile from '../tile/tile';
 import { ICalendar } from './calendar.types';
 
 const Calendar = ({
-    setIntroState,
-    presentVisibility,
-    setCurrentPresent
+    setAppState,
+    actionResultBlockVisibility,
+    setCurrentId,
+    date,
 }: ICalendar) => {
-    const date = new Date();
-    const pureDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    const timestamp = pureDate.getTime();
+    const timestamp = date.getTime();
 
     return (
         <Media
@@ -29,38 +28,38 @@ const Calendar = ({
                     {mathes.large && (
                         <StyledCalendar rows={GRID_LAYOUT_CONFIG.large.rows} columns={GRID_LAYOUT_CONFIG.large.columns}>
                             {GRID_TILES_CONFIG.map(tile => (
-                                    <Tile
-                                        key={tile.id}
-                                        row={tile.largeGrid.row}
-                                        column={tile.largeGrid.column}
-                                        isRounded={tile.isRounded}
-                                        imgSrc={tile.images.web}
-                                        id={tile.id}
-                                        timestamp={timestamp}
-                                        setIntroState={setIntroState}
-                                        presentVisibility={presentVisibility}
-                                        setCurrentPresent={setCurrentPresent}
-                                    />
-                                )
+                                <Tile
+                                    key={tile.id}
+                                    row={tile.largeGrid.row}
+                                    column={tile.largeGrid.column}
+                                    isRounded={tile.isRounded}
+                                    imgSrc={tile.images.web}
+                                    id={tile.id}
+                                    timestamp={timestamp}
+                                    setAppState={setAppState}
+                                    actionResultBlockVisibility={actionResultBlockVisibility}
+                                    setCurrentId={setCurrentId}
+                                />
+                            )
                             )}
                         </StyledCalendar>
                     )}
                     {mathes.small && (
                         <StyledCalendar rows={GRID_LAYOUT_CONFIG.small.rows} columns={GRID_LAYOUT_CONFIG.small.columns}>
                             {GRID_TILES_CONFIG.map(tile => (
-                                    <Tile
-                                        key={tile.id}
-                                        row={tile.smallGrid.row}
-                                        column={tile.smallGrid.column}
-                                        isRounded={tile.isRounded}
-                                        imgSrc={tile.images.mobile}
-                                        id={tile.id}
-                                        timestamp={timestamp}
-                                        setIntroState={setIntroState}
-                                        presentVisibility={presentVisibility}
-                                        setCurrentPresent={setCurrentPresent}
-                                    />
-                                )
+                                <Tile
+                                    key={tile.id}
+                                    row={tile.smallGrid.row}
+                                    column={tile.smallGrid.column}
+                                    isRounded={tile.isRounded}
+                                    imgSrc={tile.images.mobile}
+                                    id={tile.id}
+                                    timestamp={timestamp}
+                                    setAppState={setAppState}
+                                    actionResultBlockVisibility={actionResultBlockVisibility}
+                                    setCurrentId={setCurrentId}
+                                />
+                            )
                             )}
                         </StyledCalendar>
                     )}

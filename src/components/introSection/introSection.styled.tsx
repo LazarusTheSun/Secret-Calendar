@@ -23,7 +23,7 @@ export const StyledSection = styled.section`
     }
 `;
 
-export const StyledTitle = styled.div<{ presentVisibility: TVisibility; }>`
+export const StyledTitle = styled.div<{ actionResultBlockVisibility: TVisibility; }>`
     position: relative;
     font-family: "FUD Grotesk", sans-serif;
     font-weight: 700;
@@ -36,7 +36,7 @@ export const StyledTitle = styled.div<{ presentVisibility: TVisibility; }>`
             font-size ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
             line-height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
-        ${({ presentVisibility }) => presentVisibility === "visible" && `
+        ${({ actionResultBlockVisibility }) => actionResultBlockVisibility === "visible" && `
             font-size: 140px;
             line-height: 168px;
         `}
@@ -74,7 +74,7 @@ export const StyledTitle = styled.div<{ presentVisibility: TVisibility; }>`
     }
 `;
 
-export const StyledSecret = styled.div<{ presentVisibility: TVisibility; }>`
+export const StyledSecret = styled.div<{ actionResultBlockVisibility: TVisibility; }>`
     position: absolute;
 
     & > svg {
@@ -92,7 +92,7 @@ export const StyledSecret = styled.div<{ presentVisibility: TVisibility; }>`
             height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
             left ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
-        ${({ presentVisibility }) => presentVisibility === "visible" && `
+        ${({ actionResultBlockVisibility }) => actionResultBlockVisibility === "visible" && `
             left: -111px;
             width: 262px;
             height: 144px;
@@ -121,25 +121,29 @@ export const StyledSecret = styled.div<{ presentVisibility: TVisibility; }>`
     }
 `;
 
-export const StyledWrapper = styled.div<{ descriptionVisiblity: TVisibility; }>`
+export const StyledWrapper = styled.div<{ actionResultBlockVisibility: TVisibility; day: number; }>`
     display: flex;
     align-items: flex-end;
     overflow: hidden;
 
-    ${({descriptionVisiblity}) => descriptionVisiblity !== "idle" && `
+    ${({ actionResultBlockVisibility, day }) => actionResultBlockVisibility !== "idle" && day < 30 && `
         transition:
             height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
             margin-top ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
     `}
 `;
 
-export const StyledDescription = styled.div<{ descriptionVisiblity: TVisibility; }>`
+export const StyledDescription = styled.div<{ actionResultBlockVisibility: TVisibility; day: number; }>`
     max-width: 644px;
     text-align: center;
 
-    ${({ descriptionVisiblity }) => {
-        switch (descriptionVisiblity) {
-            case "visible":
+    ${({ actionResultBlockVisibility, day }) => {
+        if (day > 29) {
+            return '';
+        }
+
+        switch (actionResultBlockVisibility) {
+            case "hidden":
                 return `
                     transform: translateY(0%);
                     opacity: 1;
@@ -147,7 +151,7 @@ export const StyledDescription = styled.div<{ descriptionVisiblity: TVisibility;
                         opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.4}ms,
                         transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
                 `;
-            case "hidden":
+            case "visible":
                 return `
                     transform: translateY(-100%);
                     opacity: 0;

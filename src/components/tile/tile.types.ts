@@ -1,4 +1,4 @@
-import { IIntroState, TVisibility } from "../app/app.types";
+import { IAppState, TVisibility } from "../app/app.types";
 
 export interface ITile {
     row: string;
@@ -7,7 +7,7 @@ export interface ITile {
     isRounded?: boolean;
     id: number | string;
     timestamp: number;
-    presentVisibility: TVisibility;
-    setIntroState: React.Dispatch<React.SetStateAction<IIntroState>>;
-    setCurrentPresent: React.Dispatch<React.SetStateAction<number | null>>;
+    actionResultBlockVisibility: TVisibility;
+    setAppState: React.Dispatch<React.SetStateAction<IAppState>>;
+    setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
 }

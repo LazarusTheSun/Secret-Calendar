@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 
 import GlobalStyles from '../../GlobalStyles';
-import { StyledHiddenTitle, StyledBackgroundPattern } from './app.styled';
+import { StyledHiddenTitle, StyledBackgroundPattern, StyledActionResultBlockWrapper } from './app.styled';
 
 import Header from '../header/header';
 import IntroSection from '../introSection/introSection';
@@ -12,16 +12,51 @@ import Present from '../present/present';
 import InfoSection from '../infoSection/infoSection';
 
 import { getPresent } from '../../utils/getPresent';
-import { IIntroState } from './app.types';
+import { IAppState } from './app.types';
+import Victors from '../victors/victors';
 
 const App = () => {
-    const [introState, setIntroState] = useState<IIntroState>({
-        presentVisibility: "idle",
-        descriptionVisiblity: "idle",
+    const [appState, setAppState] = useState<IAppState>({
+        isActionResultBlockRendered: false,
+        actionResultBlockType: "none",
+        actionResultBlockVisibility: "idle",
     });
+    const [currentId, setCurrentId] = useState<number | null>(null);
+    const [actionResultBLockHeight, setActionResultBLockHeight] = useState(0);
 
-    const [currentPresent, setCurrentPresent] = useState<number | null>(null);
-    const present = getPresent(currentPresent);
+    const date = new Date();
+    const pureDate = new Date(date.getFullYear(), date.getMonth(), 30);
+
+    const getResultBlock = () => {
+        if (!appState.isActionResultBlockRendered) {
+            return null;
+        }
+
+        if (appState.actionResultBlockType === "victor") {
+            return (
+                <Victors setActionResultBLockHeight={setActionResultBLockHeight} />
+            );
+        }
+
+        if (appState.actionResultBlockType === "present") {
+            const present = getPresent(currentId);
+
+            if (present) {
+                return (
+                    <Present
+                        title={present.title}
+                        imageSrc={present.imgSrc}
+                        promocode={present.promocode}
+                        setAppState={setAppState}
+                        setCurrentId={setCurrentId}
+                        setActionResultBLockHeight={setActionResultBLockHeight}
+                    />
+                );
+            }
+        };
+
+        return null;
+    }
 
     return (
         <>
@@ -30,23 +65,19 @@ const App = () => {
             <Header />
             <LayoutWrapper>
                 <IntroSection
-                    presentVisibility={introState.presentVisibility}
-                    descriptionVisiblity={introState.descriptionVisiblity}
+                    setCurrentId={setCurrentId}
+                    setAppState={setAppState}
+                    date={pureDate}
+                    actionResultBlockVisibility={appState.actionResultBlockVisibility}
                 />
-                {present ? (
-                    <Present
-                        title={present.title}
-                        imageSrc={present.imgSrc}
-                        promocode={present.promocode}
-                        setIntroState={setIntroState}
-                        setCurrentPresent={setCurrentPresent}
-                        presentVisibility={introState.presentVisibility}
-                    />
-                ) : null}
+                <StyledActionResultBlockWrapper actionResultBLockHeight={actionResultBLockHeight} actionResultBlockVisibility={appState.actionResultBlockVisibility}>
+                    {getResultBlock()}
+                </StyledActionResultBlockWrapper>
                 <Calendar
-                    setIntroState={setIntroState}
-                    presentVisibility={introState.presentVisibility}
-                    setCurrentPresent={setCurrentPresent}
+                    date={pureDate}
+                    setAppState={setAppState}
+                    actionResultBlockVisibility={appState.actionResultBlockVisibility}
+                    setCurrentId={setCurrentId}
                 />
                 <InfoSection />
             </LayoutWrapper>

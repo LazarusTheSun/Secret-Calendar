@@ -1,7 +1,8 @@
-import { PRESENTS } from "../constants/present";
+import { PRESENTS } from "../constants/presents";
 
 type ReturnType = {
-    title: JSX.Element;
+    id: number;
+    title: string;
     promocode: string;
     imgSrc: string;
 }

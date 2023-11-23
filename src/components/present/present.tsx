@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import {
     StyledContent,
@@ -12,22 +12,35 @@ import {
     StyledPresent,
     StyledPromocode,
     StyledSection,
-    StyledTitle
+    StyledTitle,
 } from './present.styled';
 
 import { IPresent } from './present.types';
 
 import { copyToClipboard } from '../../utils/copyToClipboard';
+import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 
 const Present = ({
     title,
     promocode,
     imageSrc,
-    setIntroState,
-    setCurrentPresent,
-    presentVisibility
+    setAppState,
+    setCurrentId,
+    setActionResultBLockHeight,
 }: IPresent) => {
     const [isCopied, setIsCopied] = useState(false);
+    const ref = useRef<HTMLDivElement | null>(null);
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        if (ref.current) {
+            const height = ref.current.offsetHeight;
+            setActionResultBLockHeight(height);
+
+            setIsVisible(true);
+        }
+    }, []);
 
     const handleCopy = async () => {
         if (isCopied) {
@@ -38,25 +51,31 @@ const Present = ({
 
         setIsCopied(true);
 
-        const copyTimer = setTimeout(() => {
+        setTimeout(() => {
             setIsCopied(false);
         }, 3000);
-
-        return () => {
-            clearTimeout(copyTimer);
-        }
     };
 
     const handlePresentClick = () => {
-        setIntroState({
-            presentVisibility: "hidden",
-            descriptionVisiblity: "visible",
-        });
-        setCurrentPresent(null);
+        setIsVisible(false);
+
+        setAppState(state => ({
+            ...state,
+            actionResultBlockVisibility: "hidden",
+        }))
+
+        setTimeout(() => {
+            setAppState(state => ({
+                ...state,
+                actionResultBlockType: "none",
+                isActionResultBlockRendered: false,
+            }));
+            setCurrentId(null);
+        }, ANIMATIONS_TIMINGS.baseTransitionTime);
     }
 
     return (
-        <StyledSection presentVisibility={presentVisibility}>
+        <StyledSection ref={ref} isVisible={isVisible}>
             <StyledPresent>
                 <StyledContent>
                     <StyledLabel>

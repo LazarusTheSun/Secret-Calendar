@@ -27,9 +27,9 @@ const Tile = ({
     isRounded,
     id,
     timestamp,
-    presentVisibility,
-    setIntroState,
-    setCurrentPresent,
+    actionResultBlockVisibility,
+    setAppState,
+    setCurrentId,
 }: ITile) => {
     const [state, setState] = useState("default");
     const [isDisabledClicked, setIsDisabledClicked] = useState(false);
@@ -50,12 +50,23 @@ const Tile = ({
 
         if (timestamp === tileTimestamp) {
             Events.scrollEvent.register("end", () => {
-                setIntroState({
-                    presentVisibility: "visible",
-                    descriptionVisiblity: "hidden",
-                });
+                if (id as number < 30) {
+                    setAppState({
+                        isActionResultBlockRendered: true,
+                        actionResultBlockType: "present",
+                        actionResultBlockVisibility: "visible",
+                    });
+
+                    setCurrentId(id as number);
+                } else {
+                    setAppState({
+                        isActionResultBlockRendered: true,
+                        actionResultBlockType: "victor",
+                        actionResultBlockVisibility: "visible",
+                    });
     
-                setCurrentPresent(id as number);
+                    setCurrentId(null);
+                }
             });
         }
 
@@ -68,13 +79,13 @@ const Tile = ({
 
     useEffect(() => {
         if (timestamp === tileTimestamp) {
-            if(presentVisibility === "visible") {
+            if (actionResultBlockVisibility === "visible") {
                 setState("clicked");
             } else {
                 setState("active");
             }
         }
-    }, [presentVisibility]);
+    }, [actionResultBlockVisibility]);
 
     const handleClick = () => {
         if (state === "clicked" || state === "active") {
@@ -109,9 +120,15 @@ const Tile = ({
                     <StyledIconWrapper>
                         <Prize />
                     </StyledIconWrapper>
-                    <StyledClickedText>
-                        Смотри<br />подарок<br />выше
-                    </StyledClickedText>
+                    {id as number < 30 ? (
+                        <StyledClickedText>
+                            Смотри<br />подарок<br />выше
+                        </StyledClickedText>
+                    ) : (
+                        <StyledClickedText>
+                            Победители<br />опубликованы
+                        </StyledClickedText>
+                    )}
                 </StyledClickedWrapper>
             ) : (
                 <StyledImageWrapper>

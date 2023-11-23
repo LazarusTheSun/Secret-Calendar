@@ -1,9 +1,9 @@
-import styled, {css, keyframes} from "styled-components";
+import styled, { css } from "styled-components";
 
 import breakpoints from '../../constants/breakpoints.json';
 import colors from '../../constants/colors.json';
-import border from '../../images/icons/common/border.png';
-import type { TVisibility } from "../app/app.types";
+import border from '../../images/common/border.png';
+import { ANIMATIONS_TIMINGS } from "../../constants/animations";
 
 const copyMixin = css`
     margin-top: 24px;
@@ -19,69 +19,35 @@ const copyMixin = css`
     text-transform: uppercase;
 `;
 
-const fadeOut = keyframes`
-    0% {
-        display: block;
-        transform: translateY(0);
-        opacity: 1;
-    }
-    99% {
-        transform: translateY(30%);
-        opacity: 0;
-    }
-    100% {
-        display: none;
-    }
-`;
-
-const fadeIn = keyframes`
-    0% {
-        display: none;
-        transform: translateY(30%);
-        opacity: 0;
-    }
-    1% {
-        display: block;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-`;
-
-const fadeOutHelper = css`
-    animation: ${fadeOut} 1s ease-in-out 1 forwards;
-`;
-
-const fadeInHelper = css`
-    animation: ${fadeIn} 1s ease-in-out 1 forwards;
-`;
-
-export const StyledSection = styled.section<{presentVisibility: TVisibility}>`
+export const StyledSection = styled.section<{ isVisible: boolean; }>`
     opacity: 0;
+    margin-top: 0;
+    transform: translateY(30%);
+    transition:
+        margin-top ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.5}ms ease-in-out,
+        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
-    ${({presentVisibility}) => {
-        switch(presentVisibility) {
-            case "visible":
-                return fadeInHelper;
-            case "hidden":
-                return fadeOutHelper;
-            default:
-                return "";
+    ${({isVisible}) => isVisible ? `
+        opacity: 1;
+        transform: translateY(0);
+
+        @media screen and (min-width: ${breakpoints.m}px) {
+            margin-top: -8px;
         }
-    }}
 
-    @media screen and (min-width: ${breakpoints.m}px) {
-        margin-top: -8px;
-    }
+        @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
+            margin-top: 8px;
+        }
 
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
-        margin-top: 8px;
-    }
-
-    @media screen and (max-width: ${breakpoints.s - 1}px) {
-        margin-top: -8px;
-    }
+        @media screen and (max-width: ${breakpoints.s - 1}px) {
+            margin-top: -8px;
+        }
+    ` : `
+        opacity: 0;
+        transform: translateY(30%);
+        margin-top: 0;
+    `}
 `;
 
 export const StyledPresent = styled.div`
@@ -233,16 +199,18 @@ export const StyledCopied = styled.p`
 `;
 
 export const StyledImageWrapper = styled.div`
+    position: relative;
     cursor: pointer;
 
     @media screen and (min-width: ${breakpoints.l + 1}px) {
         width: 740px;
+        min-width: 740px;
     }
 
     @media screen and (max-width: ${breakpoints.l}px) {
         width: 100%;
     }
-`
+`;
 
 export const StyledImage = styled.img`
     width: 100%;  

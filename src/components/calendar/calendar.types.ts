@@ -1,7 +1,8 @@
-import { IIntroState, TVisibility } from "../app/app.types";
+import { IAppState, TVisibility } from "../app/app.types";
 
 export interface ICalendar {
-    setIntroState: React.Dispatch<React.SetStateAction<IIntroState>>
-    presentVisibility: TVisibility;
-    setCurrentPresent: React.Dispatch<React.SetStateAction<number | null>>;
+    setAppState: React.Dispatch<React.SetStateAction<IAppState>>
+    actionResultBlockVisibility: TVisibility;
+    setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
+    date: Date;
 }

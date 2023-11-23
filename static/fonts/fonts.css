@@ -10,6 +10,16 @@
 }
 
 @font-face {
+  font-family: 'FUD Grotesk';
+  src:
+    local('FUD Grotesk'),
+    url(./Fud-Grotesk-medium.ttf) format('opentype'),
+    url(./Fud-Grotesk-Medium.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Source Sans Pro';
   src: local('Source Sans Pro'),
     url(./SourceSansPro-Regular.ttf) format('opentype');
