@@ -1,8 +1,14 @@
 import type { GatsbyConfig } from "gatsby";
 
+
+import autoprefixer from 'autoprefixer';
+import browserslist from 'browserslist';
+
 const config: GatsbyConfig = {
 	siteMetadata: {
-		title: `Secret Calendar`,
+		title: `Адвент-календарь от Secret Kitchen`,
+		keywords: "Розыгрыш, подарки, календарь",
+		description: "Не упусти предновогодний розыгрыш! Новые подарки ждут тебя каждый день!",
 		siteUrl: `https://promo.secret-kitchen.ru`,
 		image: "src/images/favicon/favicon.png",
 	},
@@ -10,6 +16,16 @@ const config: GatsbyConfig = {
 	plugins: [
 		"gatsby-plugin-styled-components",
 		"gatsby-plugin-react-svg",
+		{
+			resolve: `gatsby-plugin-postcss`,
+			options: {
+				postCssPlugins: [
+					autoprefixer({
+						grid: true,
+					})
+				],
+			},
+		},
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {

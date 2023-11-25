@@ -49,7 +49,11 @@ const Tile = ({
 
 
         if (timestamp === tileTimestamp) {
-            Events.scrollEvent.register("end", () => {
+            Events.scrollEvent.register("end", (to) => {
+                if (to) {
+                    return;
+                }
+
                 if (id as number < 30) {
                     setAppState({
                         isActionResultBlockRendered: true,

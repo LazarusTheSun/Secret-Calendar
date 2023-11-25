@@ -10,6 +10,11 @@ import patternMobile from '../../images/background/background-pattern-mobile.jpg
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 import { TVisibility } from './app.types';
 
+export const StyledApp = styled.div`
+    overflow: hidden;
+    width: 100%;
+`;
+
 export const StyledHiddenTitle = styled.h1`
     position: absolute;
     overflow: hidden;

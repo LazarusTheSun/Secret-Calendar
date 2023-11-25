@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import GlobalStyles from '../../GlobalStyles';
-import { StyledHiddenTitle, StyledBackgroundPattern, StyledActionResultBlockWrapper } from './app.styled';
+import { StyledHiddenTitle, StyledBackgroundPattern, StyledActionResultBlockWrapper, StyledApp } from './app.styled';
 
 import Header from '../header/header';
 import IntroSection from '../introSection/introSection';
@@ -25,7 +25,7 @@ const App = () => {
     const [actionResultBLockHeight, setActionResultBLockHeight] = useState(0);
 
     const date = new Date();
-    const pureDate = new Date(date.getFullYear(), date.getMonth(), 30);
+    const pureDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     const getResultBlock = () => {
         if (!appState.isActionResultBlockRendered) {
@@ -59,7 +59,7 @@ const App = () => {
     }
 
     return (
-        <>
+        <StyledApp>
             <StyledHiddenTitle>Secret Календарь</StyledHiddenTitle>
             <StyledBackgroundPattern />
             <Header />
@@ -83,7 +83,7 @@ const App = () => {
             </LayoutWrapper>
             <Footer />
             <GlobalStyles />
-        </>
+        </StyledApp>
     )
 };
 

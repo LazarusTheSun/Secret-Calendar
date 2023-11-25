@@ -5,6 +5,8 @@ import colors from '../../constants/colors.json';
 import border from '../../images/common/border.png';
 import { ANIMATIONS_TIMINGS } from "../../constants/animations";
 
+const ratio = 1.233;
+
 const copyMixin = css`
     margin-top: 24px;
     padding-left: 20px;
@@ -19,7 +21,11 @@ const copyMixin = css`
     text-transform: uppercase;
 `;
 
-export const StyledSection = styled.section<{ isVisible: boolean; }>`
+export const StyledSection = styled.section`
+    position: relative;
+`;
+
+export const StyledPresentWrapper = styled.div<{ isVisible: boolean; }>`
     opacity: 0;
     margin-top: 0;
     transform: translateY(30%);
@@ -200,7 +206,6 @@ export const StyledCopied = styled.p`
 
 export const StyledImageWrapper = styled.div`
     position: relative;
-    cursor: pointer;
 
     @media screen and (min-width: ${breakpoints.l + 1}px) {
         width: 740px;
@@ -208,7 +213,81 @@ export const StyledImageWrapper = styled.div`
     }
 
     @media screen and (max-width: ${breakpoints.l}px) {
+        width: 740px;
+        max-width: 100vw;
+    }
+`;
+
+export const StyledLight = styled.div<{isVisible: boolean;}>`
+    position: absolute;
+    z-index: 1;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(-30%);
+    transition:
+        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
+        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+    user-select: none;
+
+    ${({isVisible}) => isVisible && `
+        opacity: 1;
+        transform: translateY(0);
+    `}
+
+    @media screen and (min-width: ${breakpoints.xl}px) {
+        left: calc(100% - 740px);
+        top: -70%;
+        width: 935px;
+        min-width: 935px;
+    }
+
+    @media screen and (min-width: ${breakpoints.m}px) and (max-width: ${breakpoints.xl - 1}px) {
+        left: calc(50% - 435px);
+        top: -35%;
+        width: 1000px;
+        min-width: 1000px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {
+        left: calc(50% - 550px);
+        top: -35%;
+        width: 1100px;
+        min-width: 1100px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        left: calc(50% - 50vw);
+        top: -400px;
+        width: 100vw;
+    }
+
+    & > svg {
         width: 100%;
+    }
+`;
+
+export const StyledImageOverlay = styled.div`
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    top: 0;
+
+    @media screen and (min-width: ${breakpoints.xl}px) {
+        left: calc(100% - 740px);
+        width: 740px;
+        height: 600px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl - 1}px) {
+        left: calc(50% - 370px);
+        width: 740px;
+        height: 600px;
+    }
+
+    @media screen and (max-width: ${breakpoints.s - 1}px) {
+        left: calc(50% - 50vw);
+        width: 100vw;
+        height: calc(100vw / 1.233);
     }
 `;
 

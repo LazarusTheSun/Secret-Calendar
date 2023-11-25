@@ -12,7 +12,6 @@ const GlobalStyles = createGlobalStyle`
 	body {
 		font-family: "Source Sans Pro", sans-serif;
 		color: ${colors.majorWhite};
-		overflow-x: hidden;
 	}
 
 	a {
