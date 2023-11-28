@@ -1,9 +1,9 @@
 import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
 
 import App from "../components/app/app";
+import { SEO } from "../components/seo/seo";
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage = () => {
 	return (
 		<App />
 	)
@@ -11,4 +11,8 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>В новый год с Secret Kitchen!</title>;
+export const Head = () => {
+	return (
+		<SEO />
+	)
+}

@@ -6,7 +6,6 @@ import {
     StyledCopied,
     StyledFragment,
     StyledImage,
-    StyledImageOverlay,
     StyledImageWrapper,
     StyledInfo,
     StyledLabel,
@@ -23,18 +22,16 @@ import { IPresent } from './present.types';
 
 import { copyToClipboard } from '../../utils/copyToClipboard';
 import breakpoints from '../../constants/breakpoints.json';
-import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 
 import LightDesktop from '../../images/common/light-desktop.svg';
 import LightTablet from '../../images/common/light-tablet.svg';
-import LightMobile from '../../images/common/light-mobile.svg';
+import { SITE_LINK } from '../../constants/common';
 
 const Present = ({
     title,
     promocode,
     imageSrc,
-    setAppState,
-    setCurrentId,
+    actionResultBLockHeight,
     setActionResultBLockHeight,
 }: IPresent) => {
     const [isCopied, setIsCopied] = useState(false);
@@ -43,15 +40,27 @@ const Present = ({
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        if (ref.current) {
-            const height = ref.current.offsetHeight;
-            setActionResultBLockHeight(height);
+        const heightSetter = () => {
+            if (ref.current) {
+                const height = ref.current.offsetHeight;
 
-            console.log(ref.current.offsetHeight);
+                if (actionResultBLockHeight !== height) {
+                    setActionResultBLockHeight(height);
+                }
+            }
+        }
+
+        if (ref.current) {
+            heightSetter();
 
             setIsVisible(true);
+
+            window.addEventListener("resize", heightSetter);
+            return () => {
+                window.removeEventListener("resize", heightSetter);
+            }
         }
-    }, []);
+    }, [window.innerWidth]);
 
     const handleCopy = async () => {
         if (isCopied) {
@@ -66,24 +75,6 @@ const Present = ({
             setIsCopied(false);
         }, 3000);
     };
-
-    const handlePresentClick = () => {
-        setIsVisible(false);
-
-        setAppState(state => ({
-            ...state,
-            actionResultBlockVisibility: "hidden",
-        }))
-
-        setTimeout(() => {
-            setAppState(state => ({
-                ...state,
-                actionResultBlockType: "none",
-                isActionResultBlockRendered: false,
-            }));
-            setCurrentId(null);
-        }, ANIMATIONS_TIMINGS.baseTransitionTime);
-    }
 
     return (
         <StyledSection ref={ref}>
@@ -100,9 +91,9 @@ const Present = ({
                         {
                             isCopied
                                 ? <StyledCopied>Скопировано</StyledCopied>
-                                : <StyledPromocode onClick={handleCopy} type="button">{promocode}</StyledPromocode>
+                                : <StyledPromocode onClick={handleCopy}>{promocode}</StyledPromocode>
                         }
-                        <StyledLink href="https://secret-kitchen.ru/?utm_source=new_year_24&utm_medium=site&utm_campaign=new_year_24" target="_blank">Заказать</StyledLink>
+                        <StyledLink href={SITE_LINK} target="_blank">Заказать</StyledLink>
                     </StyledContent>
                     <StyledImageWrapper>
                         <StyledImage src={imageSrc} alt="Подарок" />
@@ -122,7 +113,6 @@ const Present = ({
                     )}
                 </Media>
             </StyledLight>
-            <StyledImageOverlay onClick={handlePresentClick} />
         </StyledSection>
     )
 };

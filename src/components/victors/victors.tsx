@@ -6,18 +6,33 @@ import { IVictors } from './victors.types';
 
 const Victors = ({
     setActionResultBLockHeight,
+    actionResultBLockHeight,
 }: IVictors) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        const heightSetter = () => {
+            if (ref.current) {
+                const height = ref.current.offsetHeight;
+
+                if (actionResultBLockHeight !== height) {
+                    setActionResultBLockHeight(height);
+                }
+            }
+        }
+
         if (ref.current) {
-            const height = ref.current.offsetHeight;
-            setActionResultBLockHeight(height);
+            heightSetter();
 
             setIsVisible(true);
+
+            window.addEventListener("resize", heightSetter);
+            return () => {
+                window.removeEventListener("resize", heightSetter);
+            }
         }
-    }, []);
+    }, [window.innerWidth]);
 
     return (
         <StyledSection ref={ref} isVisible={isVisible}>

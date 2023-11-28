@@ -31,7 +31,7 @@ const activeStateMixin = css`
         background-image: linear-gradient(
             90deg,
             ${hexToRgb(colors.majorWhite, 0)} 7.66%,
-            ${hexToRgb(colors.majorWhite, 0.6)} 55.66%,
+            ${hexToRgb(colors.majorWhite, 0.4)} 55.66%,
             ${hexToRgb(colors.majorWhite, 0)} 92.51%
         );
         animation: ${move} 1.25s ease-in-out infinite both;
@@ -67,6 +67,16 @@ const shake = keyframes`
 
 const shakeHelper = css`
     animation: ${shake} 1 ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out forwards;
+`;
+
+export const StyledClickedTile = styled.div<{row: string; column: string;}>`
+    width: 100%;
+    height: 100%;
+
+    ${({row, column}) => `
+        grid-column: ${column};
+        grid-row: ${row};
+    `}
 `;
 
 export const StyledTile = styled.div<{row: string; column: string; state: string; isRounded?: boolean; isDisabledClicked: boolean;}>`

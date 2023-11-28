@@ -7,7 +7,8 @@ import {
     StyledImageWrapper,
     StyledClickedText,
     StyledIconWrapper,
-    StyledClickedWrapper
+    StyledClickedWrapper,
+    StyledClickedTile
 } from './tile.styled';
 import { ITile } from './tile.types';
 import { getTimestamp } from './tile.utils';
@@ -110,7 +111,24 @@ const Tile = ({
         }
     };
 
-    return (
+    return state === "clicked" ? (
+        <StyledClickedTile row={row} column={column}>
+            <StyledClickedWrapper>
+                <StyledIconWrapper>
+                    <Prize />
+                </StyledIconWrapper>
+                {id as number < 30 ? (
+                    <StyledClickedText>
+                        Смотри<br />подарок<br />выше
+                    </StyledClickedText>
+                ) : (
+                    <StyledClickedText>
+                        Победители<br />опубликованы
+                    </StyledClickedText>
+                )}
+            </StyledClickedWrapper>
+        </StyledClickedTile>
+    ) : (
         <StyledTile
             row={row}
             column={column}
@@ -119,26 +137,9 @@ const Tile = ({
             isRounded={isRounded}
             isDisabledClicked={isDisabledClicked}
         >
-            {state === "clicked" ? (
-                <StyledClickedWrapper>
-                    <StyledIconWrapper>
-                        <Prize />
-                    </StyledIconWrapper>
-                    {id as number < 30 ? (
-                        <StyledClickedText>
-                            Смотри<br />подарок<br />выше
-                        </StyledClickedText>
-                    ) : (
-                        <StyledClickedText>
-                            Победители<br />опубликованы
-                        </StyledClickedText>
-                    )}
-                </StyledClickedWrapper>
-            ) : (
-                <StyledImageWrapper>
-                    <StyledImage src={imgSrc} alt="" />
-                </StyledImageWrapper>
-            )}
+            <StyledImageWrapper>
+                <StyledImage src={imgSrc} alt="" />
+            </StyledImageWrapper>
         </StyledTile>
     );
 };

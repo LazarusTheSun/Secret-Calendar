@@ -54,8 +54,8 @@ export const StyledBackgroundPattern = styled.div`
 
 export const StyledActionResultBlockWrapper = styled.div<{ actionResultBLockHeight: number; actionResultBlockVisibility: TVisibility }>`
     position: relative;
-    transition: height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
     height: 0;
+    transition: height ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
 
     ${({ actionResultBlockVisibility, actionResultBLockHeight }) => actionResultBlockVisibility === "visible" && `
         height: ${actionResultBLockHeight}px;

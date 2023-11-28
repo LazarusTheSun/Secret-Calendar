@@ -77,8 +77,8 @@ export const PRESENTS = [
     },
     {
         id: 8,
-        promocode: "NOODLE",
-        title:	"Лапша с говядиной с сычуаньском соусе от 1890 ₽",
+        promocode: "KARAAGE",
+        title:	"Салат с курицей карааге",
         imgSrc: present8,
     },
     {
@@ -89,8 +89,8 @@ export const PRESENTS = [
     },
     {
         id: 10,
-        promocode: "KREVETKA",
-        title:	"Креветки катаифи в подарок от 1890 ₽",
+        promocode: "DAMP",
+        title:	"Дамплинги с креветками и курицей от 1890 ₽",
         imgSrc: present10,
     },
     {
@@ -101,8 +101,8 @@ export const PRESENTS = [
     },
     {
         id: 12,
-        promocode: "KURITCA",
-        title:	"Рис с курицей в соусе терияки в подарок от 1890 ₽",
+        promocode: "CEZAR",
+        title:	"Цезарь с курицей от 1890 ₽",
         imgSrc: present12,
     },
     {

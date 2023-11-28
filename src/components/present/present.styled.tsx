@@ -4,6 +4,7 @@ import breakpoints from '../../constants/breakpoints.json';
 import colors from '../../constants/colors.json';
 import border from '../../images/common/border.png';
 import { ANIMATIONS_TIMINGS } from "../../constants/animations";
+import { TVisibility } from "../app/app.types";
 
 const ratio = 1.233;
 
@@ -22,7 +23,10 @@ const copyMixin = css`
 `;
 
 export const StyledSection = styled.section`
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
 `;
 
 export const StyledPresentWrapper = styled.div<{ isVisible: boolean; }>`
@@ -149,8 +153,11 @@ export const StyledFragment = styled.span`
     font-weight: 700;
 `;
 
-export const StyledPromocode = styled.button`
+export const StyledPromocode = styled.div`
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 6px;
     font-family: inherit;
     font-size: 36px;
@@ -167,27 +174,30 @@ export const StyledPromocode = styled.button`
         &:hover {
             &::after {
                 opacity: 1;
+                visibility: visible;
             }
         }
-    }
 
-    &::after {
-        position: absolute;
-        content: "Скопировать";
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        font-size: 28px;
-        line-height: 33px;
-        letter-spacing: 0.16em;
-        border-radius: 16px;
-        opacity: 0;
-        background-color: ${colors.majorBlack};
-        transition: opacity 0.2s ease-in-out;
+        &::after {
+            position: absolute;
+            content: "Скопировать";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 28px;
+            line-height: 33px;
+            letter-spacing: 0.16em;
+            border-radius: 16px;
+            opacity: 0;
+            visibility: hidden;
+            background-color: ${colors.majorBlack};
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+        }
     }
 `;
 
@@ -228,6 +238,7 @@ export const StyledLight = styled.div<{isVisible: boolean;}>`
         transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
         opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
     user-select: none;
+    pointer-events: none;
 
     ${({isVisible}) => isVisible && `
         opacity: 1;
@@ -263,31 +274,6 @@ export const StyledLight = styled.div<{isVisible: boolean;}>`
 
     & > svg {
         width: 100%;
-    }
-`;
-
-export const StyledImageOverlay = styled.div`
-    position: absolute;
-    cursor: pointer;
-    z-index: 2;
-    top: 0;
-
-    @media screen and (min-width: ${breakpoints.xl}px) {
-        left: calc(100% - 740px);
-        width: 740px;
-        height: 600px;
-    }
-
-    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl - 1}px) {
-        left: calc(50% - 370px);
-        width: 740px;
-        height: 600px;
-    }
-
-    @media screen and (max-width: ${breakpoints.s - 1}px) {
-        left: calc(50% - 50vw);
-        width: 100vw;
-        height: calc(100vw / 1.233);
     }
 `;
 

@@ -1,0 +1,1 @@
+export const SITE_LINK = 'https://secret-kitchen.ru/?utm_source=new_year_24&utm_medium=site&utm_campaign=new_year_24';

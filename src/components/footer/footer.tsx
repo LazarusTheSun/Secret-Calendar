@@ -71,7 +71,7 @@ const Footer = () => {
                 <nav>
                     <StyledPoliciesMenu>
                         <li>
-                            <StyledPolicyLink href="https://secret-kitchen.ru/terms-of-use" target="_blank">правовые документы</StyledPolicyLink>
+                            <StyledPolicyLink href="https://secret-kitchen.ru/moskva/page/terms-of-use" target="_blank">правовые документы</StyledPolicyLink>
                         </li>
                         <li>
                             <StyledPolicyLink href="#" target="_blank">полные условия</StyledPolicyLink>

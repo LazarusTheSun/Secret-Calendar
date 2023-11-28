@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import GlobalStyles from '../../GlobalStyles';
 import { StyledHiddenTitle, StyledBackgroundPattern, StyledActionResultBlockWrapper, StyledApp } from './app.styled';
@@ -14,6 +14,7 @@ import InfoSection from '../infoSection/infoSection';
 import { getPresent } from '../../utils/getPresent';
 import { IAppState } from './app.types';
 import Victors from '../victors/victors';
+import { SEO } from '../seo/seo';
 
 const App = () => {
     const [appState, setAppState] = useState<IAppState>({
@@ -23,6 +24,8 @@ const App = () => {
     });
     const [currentId, setCurrentId] = useState<number | null>(null);
     const [actionResultBLockHeight, setActionResultBLockHeight] = useState(0);
+
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
 
     const date = new Date();
     const pureDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -34,7 +37,10 @@ const App = () => {
 
         if (appState.actionResultBlockType === "victor") {
             return (
-                <Victors setActionResultBLockHeight={setActionResultBLockHeight} />
+                <Victors
+                    setActionResultBLockHeight={setActionResultBLockHeight}
+                    actionResultBLockHeight={actionResultBLockHeight}
+                />
             );
         }
 
@@ -47,8 +53,7 @@ const App = () => {
                         title={present.title}
                         imageSrc={present.imgSrc}
                         promocode={present.promocode}
-                        setAppState={setAppState}
-                        setCurrentId={setCurrentId}
+                        actionResultBLockHeight={actionResultBLockHeight}
                         setActionResultBLockHeight={setActionResultBLockHeight}
                     />
                 );
@@ -70,7 +75,7 @@ const App = () => {
                     date={pureDate}
                     actionResultBlockVisibility={appState.actionResultBlockVisibility}
                 />
-                <StyledActionResultBlockWrapper actionResultBLockHeight={actionResultBLockHeight} actionResultBlockVisibility={appState.actionResultBlockVisibility}>
+                <StyledActionResultBlockWrapper ref={wrapperRef} actionResultBLockHeight={actionResultBLockHeight} actionResultBlockVisibility={appState.actionResultBlockVisibility}>
                     {getResultBlock()}
                 </StyledActionResultBlockWrapper>
                 <Calendar

@@ -179,16 +179,9 @@ export const StyledDescription = styled.div<{ actionResultBlockVisibility: TVisi
     }
 `;
 
-export const StyledLearnMore = styled.div`
+export const StyledLearnMore = styled.span`
     display: inline-block;
+    margin-left: 5px;
     text-decoration: underline;
     cursor: pointer;
-
-    @media screen and (min-width: ${breakpoints.s}px) {
-        margin-left: 5px;
-    }
-
-    @media screen and (max-width: ${breakpoints.s - 1}px) {
-        margin: 0 auto;
-    }
 `;

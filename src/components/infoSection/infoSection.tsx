@@ -13,7 +13,7 @@ import {
     StyledSection,
     StyledWrapper,
     StyledInfoWrapper
-} from './infroSection.styled';
+} from './infoSection.styled';
 
 import { DATA } from './infoSection.constatns';
 
