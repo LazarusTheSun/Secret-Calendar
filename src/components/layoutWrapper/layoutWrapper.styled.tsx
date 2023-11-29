@@ -18,7 +18,7 @@ export const StyledLayoutWrapper = styled.div`
     }
 
     @media screen and (max-width: ${breakpoints.xxs - 1}px) {
-        padding: 0 16px;
+        padding: 0 25px;
         max-width: 100%;
     }
 `;

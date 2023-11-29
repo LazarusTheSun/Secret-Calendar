@@ -11,7 +11,7 @@ export const useGetDeviceType = () => {
                 setDevice("android");
             }
 
-            if (/Macintosh|iPhone|iPad/.test(agent) && device !== "ios") {
+            if (/iPhone|iPad/.test(agent) && device !== "ios") {
                 setDevice("ios");
             }
         };

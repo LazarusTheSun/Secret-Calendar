@@ -37,7 +37,7 @@ export const StyledLogoWrapper = styled.a`
 
     @media screen and (min-width: ${breakpoints.m}px) {
         width: 360px;
-        height: 70px;
+        height: 64px;
     }
 
     @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px) {

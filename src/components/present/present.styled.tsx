@@ -4,9 +4,6 @@ import breakpoints from '../../constants/breakpoints.json';
 import colors from '../../constants/colors.json';
 import border from '../../images/common/border.png';
 import { ANIMATIONS_TIMINGS } from "../../constants/animations";
-import { TVisibility } from "../app/app.types";
-
-const ratio = 1.233;
 
 const copyMixin = css`
     margin-top: 24px;
@@ -32,15 +29,12 @@ export const StyledSection = styled.section`
 export const StyledPresentWrapper = styled.div<{ isVisible: boolean; }>`
     opacity: 0;
     margin-top: 0;
-    transform: translateY(30%);
     transition:
-        margin-top ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
-        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.5}ms ease-in-out,
-        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+        margin-top ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out,
+        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.5}ms ease-out;
 
-    ${({isVisible}) => isVisible ? `
+    ${({ isVisible }) => isVisible && `
         opacity: 1;
-        transform: translateY(0);
 
         @media screen and (min-width: ${breakpoints.m}px) {
             margin-top: -8px;
@@ -53,10 +47,6 @@ export const StyledPresentWrapper = styled.div<{ isVisible: boolean; }>`
         @media screen and (max-width: ${breakpoints.s - 1}px) {
             margin-top: -8px;
         }
-    ` : `
-        opacity: 0;
-        transform: translateY(30%);
-        margin-top: 0;
     `}
 `;
 
@@ -73,9 +63,15 @@ export const StyledPresent = styled.div`
     }
 `;
 
-export const StyledContent = styled.div`
+export const StyledContent = styled.div<{ isVisible: boolean; }>`
     display: flex;
     flex-direction: column;
+    transform: translateY(50px);
+    transition: ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
+
+    ${({isVisible}) => isVisible && `
+        transform: translateY(0);
+    `}
 
     @media screen and (min-width: ${breakpoints.xl}px) {
         align-items: flex-start;
@@ -135,11 +131,25 @@ export const StyledTitle = styled.div`
     }
 `;
 
-export const StyledInfo = styled.p`
+export const StyledInfo = styled.p<{isVisible: boolean;}>`
+    transform: translateY(40px);
+    transition: ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
+
+    ${({isVisible}) => isVisible && `
+        transform: translateY(0);
+    `}
+
+    @media screen and (min-width: ${breakpoints.xl}px) {
+        margin-top: 44px;
+    }
+
     @media screen and (min-width: ${breakpoints.s}px) {
-        margin-top: 64px;
         font-size: 16px;
         line-height: 20px;
+    }
+
+    @media screen and (min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.xl - 1}px) {
+        margin-top: 64px;
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
@@ -153,7 +163,7 @@ export const StyledFragment = styled.span`
     font-weight: 700;
 `;
 
-export const StyledPromocode = styled.div`
+export const StyledPromocode = styled.div<{isVisible: boolean;}>`
     position: relative;
     display: flex;
     align-items: center;
@@ -167,6 +177,12 @@ export const StyledPromocode = styled.div`
     background: none;
     cursor: pointer;
     user-select: none;
+    transform: translateY(60px);
+    transition: ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
+
+    ${({isVisible}) => isVisible && `
+        transform: translateY(0);
+    `}
 
     ${copyMixin};
 
@@ -189,14 +205,14 @@ export const StyledPromocode = styled.div`
             left: 0;
             width: 100%;
             height: 100%;
-            font-size: 28px;
-            line-height: 33px;
+            font-size: 20px;
+            line-height: 25px;
             letter-spacing: 0.16em;
             border-radius: 16px;
             opacity: 0;
             visibility: hidden;
             background-color: ${colors.majorBlack};
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
         }
     }
 `;
@@ -205,8 +221,8 @@ export const StyledCopied = styled.p`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    line-height: 33px;
+    font-size: 20px;
+    line-height: 25px;
     letter-spacing: 0.16em;
     border-radius: 16px;
     opacity: 0.6;
@@ -214,8 +230,14 @@ export const StyledCopied = styled.p`
     ${copyMixin};
 `;
 
-export const StyledImageWrapper = styled.div`
+export const StyledImageWrapper = styled.div<{ isVisible: boolean; }>`
     position: relative;
+    transform: translateY(150px) scale(0.82);
+    transition: transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
+
+    ${({ isVisible }) => isVisible && `
+        transform: translateY(0) scale(1);
+    `}
 
     @media screen and (min-width: ${breakpoints.l + 1}px) {
         width: 740px;
@@ -228,19 +250,19 @@ export const StyledImageWrapper = styled.div`
     }
 `;
 
-export const StyledLight = styled.div<{isVisible: boolean;}>`
+export const StyledLight = styled.div<{ isVisible: boolean; }>`
     position: absolute;
     z-index: 1;
     will-change: transform;
     opacity: 0;
     transform: translateY(-30%);
     transition:
-        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out,
-        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+        transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out,
+        opacity ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
     user-select: none;
     pointer-events: none;
 
-    ${({isVisible}) => isVisible && `
+    ${({ isVisible }) => isVisible && `
         opacity: 1;
         transform: translateY(0);
     `}
@@ -267,13 +289,15 @@ export const StyledLight = styled.div<{isVisible: boolean;}>`
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
-        left: calc(50% - 50vw);
-        top: -400px;
-        width: 100vw;
+        width: 135vw;
+        height: calc(135vw * 1.35);
+        top: -80vw;
+        left: calc(50% - 61vw);
     }
 
     & > svg {
         width: 100%;
+        height: 100%;
     }
 `;
 
@@ -281,16 +305,22 @@ export const StyledImage = styled.img`
     width: 100%;  
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a<{isVisible: boolean;}>`
     padding: 12px 24px;
     font-size: 16px;
     line-height: 20px;
     color: ${colors.majorBlack};
     border-radius: 30px;
     background-color: ${colors.majorYellow};
+    transform: translateY(60px);
+    transition: ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-out;
+
+    ${({isVisible}) => isVisible && `
+        transform: translateY(0);
+    `}
 
     @media (hover) {
-        transition: background-color 0.2s ease-in-out;
+        transition: background-color 0.2s ease-out;
 
         &:hover {
             background-color: ${colors.majorYellowDarker};

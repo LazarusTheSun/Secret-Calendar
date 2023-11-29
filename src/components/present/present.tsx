@@ -25,6 +25,7 @@ import breakpoints from '../../constants/breakpoints.json';
 
 import LightDesktop from '../../images/common/light-desktop.svg';
 import LightTablet from '../../images/common/light-tablet.svg';
+import LightMobile from '../../images/common/light-mobile.svg';
 import { SITE_LINK } from '../../constants/common';
 
 const Present = ({
@@ -80,28 +81,41 @@ const Present = ({
         <StyledSection ref={ref}>
             <StyledPresentWrapper isVisible={isVisible}>
                 <StyledPresent>
-                    <StyledContent>
+                    <StyledContent isVisible={isVisible}>
                         <StyledLabel>
                             твой подарок сегодня
                         </StyledLabel>
                         <StyledTitle>{title}</StyledTitle>
-                        <StyledInfo>
+                        <StyledInfo isVisible={isVisible}>
                             Для получения подарка используй этот промокод. <br /> Он работает только <StyledFragment>сегодня</StyledFragment>.
                         </StyledInfo>
                         {
                             isCopied
                                 ? <StyledCopied>Скопировано</StyledCopied>
-                                : <StyledPromocode onClick={handleCopy}>{promocode}</StyledPromocode>
+                                : <StyledPromocode onClick={handleCopy} isVisible={isVisible}>{promocode}</StyledPromocode>
                         }
-                        <StyledLink href={SITE_LINK} target="_blank">Заказать</StyledLink>
+                        <StyledLink href={SITE_LINK} target="_blank" isVisible={isVisible}>Заказать</StyledLink>
                     </StyledContent>
-                    <StyledImageWrapper>
+                    <StyledImageWrapper isVisible={isVisible}>
                         <StyledImage src={imageSrc} alt="Подарок" />
                     </StyledImageWrapper>
                 </StyledPresent>
             </StyledPresentWrapper>
             <StyledLight isVisible={isVisible}>
                 <Media queries={{
+                    desktop: `(min-width: ${breakpoints.m}px)`,
+                    tablet: `(min-width: ${breakpoints.s}px) and (max-width: ${breakpoints.m - 1}px)`,
+                    mobile: `(max-width: ${breakpoints.s - 1}px)`,
+                }}>
+                    {matches => (
+                        <>
+                            {matches.desktop && <LightDesktop />}
+                            {matches.tablet && <LightTablet />}
+                            {matches.mobile && <LightMobile />}
+                        </>
+                    )}
+                </Media>
+                {/* <Media queries={{
                     large: `(min-width: ${breakpoints.m}px)`,
                     small: `(max-width: ${breakpoints.m - 1}px)`,
                 }}>
@@ -111,7 +125,7 @@ const Present = ({
                             {matches.small && <LightTablet />}
                         </>
                     )}
-                </Media>
+                </Media> */}
             </StyledLight>
         </StyledSection>
     )

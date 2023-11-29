@@ -112,7 +112,7 @@ export const StyledColumnTitle = styled.h2`
 
 export const StyledDescription = styled.div`
     & > * + * {
-        margin-top: 1.3em;
+        margin-top: 8px;
     }
 `;
 

@@ -34,7 +34,7 @@ const activeStateMixin = css`
             ${hexToRgb(colors.majorWhite, 0.4)} 55.66%,
             ${hexToRgb(colors.majorWhite, 0)} 92.51%
         );
-        animation: ${move} 1.25s ease-in-out infinite both;
+        animation: ${move} 2s ease-in-out infinite both;
     }
 
     @media (hover) {

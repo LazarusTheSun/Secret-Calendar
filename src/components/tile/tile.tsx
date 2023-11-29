@@ -17,7 +17,7 @@ import Prize from '../../images/icons/common/prize.svg';
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 
 const SCROLL_OPTIONS = {
-    duration: 650,
+    duration: 400,
     smooth: "easeInOutQuad",
 }
 

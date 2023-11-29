@@ -1,6 +1,6 @@
 export const ANIMATIONS_TIMINGS = {
     delayBeforePresentShow: 600,
-    baseTransitionTime: 700,
+    baseTransitionTime: 400,
     refreshRate: 1000 / 60,
 }
 

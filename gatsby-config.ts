@@ -49,8 +49,11 @@ const config: GatsbyConfig = {
 						policy: [{ userAgent: '*', disallow: ['/'] }]
 					},
 					production: {
-						policy: [{ userAgent: '*', allow: '/' }]
-					}
+						policy: [{ userAgent: '*', disallow: ['/'] }]
+					},
+					// production: {
+					// 	policy: [{ userAgent: '*', allow: '/' }]
+					// }
 				}
 			}
 		},
