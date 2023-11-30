@@ -61,7 +61,7 @@ const Present = ({
                 window.removeEventListener("resize", heightSetter);
             }
         }
-    }, [window.innerWidth]);
+    }, []);
 
     const handleCopy = async () => {
         if (isCopied) {

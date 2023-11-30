@@ -49,13 +49,19 @@ const config: GatsbyConfig = {
 						policy: [{ userAgent: '*', disallow: ['/'] }]
 					},
 					production: {
-						policy: [{ userAgent: '*', disallow: ['/'] }]
-					},
-					// production: {
-					// 	policy: [{ userAgent: '*', allow: '/' }]
-					// }
+						policy: [{ userAgent: '*', allow: '/' }]
+					}
 				}
 			}
+		},
+		{
+		  resolve: `gatsby-plugin-yandex-metrika`,
+		  options: {
+			trackingId: 91607576,
+			webvisor: true,
+			trackHash: true,
+			afterBody: true,
+		  },
 		},
 	]
 };

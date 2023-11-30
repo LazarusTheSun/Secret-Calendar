@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 import GlobalStyles from '../../GlobalStyles';
 import { StyledHiddenTitle, StyledBackgroundPattern, StyledActionResultBlockWrapper, StyledApp } from './app.styled';
@@ -14,21 +14,25 @@ import InfoSection from '../infoSection/infoSection';
 import { getPresent } from '../../utils/getPresent';
 import { IAppState } from './app.types';
 import Victors from '../victors/victors';
-import { SEO } from '../seo/seo';
 
 const App = () => {
-    const [appState, setAppState] = useState<IAppState>({
+    const date = new Date();
+
+    const baseState: IAppState = date.getMonth() === 11 ? {
         isActionResultBlockRendered: false,
         actionResultBlockType: "none",
         actionResultBlockVisibility: "idle",
-    });
+    } : {
+        isActionResultBlockRendered: true,
+        actionResultBlockType: "victor",
+        actionResultBlockVisibility: "visible",
+    };
+
+    const [appState, setAppState] = useState<IAppState>(baseState);
     const [currentId, setCurrentId] = useState<number | null>(null);
     const [actionResultBLockHeight, setActionResultBLockHeight] = useState(0);
 
     const wrapperRef = useRef<HTMLDivElement | null>(null);
-
-    const date = new Date();
-    const pureDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     const getResultBlock = () => {
         if (!appState.isActionResultBlockRendered) {
@@ -72,14 +76,14 @@ const App = () => {
                 <IntroSection
                     setCurrentId={setCurrentId}
                     setAppState={setAppState}
-                    date={pureDate}
+                    date={date}
                     actionResultBlockVisibility={appState.actionResultBlockVisibility}
                 />
                 <StyledActionResultBlockWrapper ref={wrapperRef} actionResultBLockHeight={actionResultBLockHeight} actionResultBlockVisibility={appState.actionResultBlockVisibility}>
                     {getResultBlock()}
                 </StyledActionResultBlockWrapper>
                 <Calendar
-                    date={pureDate}
+                    date={date}
                     setAppState={setAppState}
                     actionResultBlockVisibility={appState.actionResultBlockVisibility}
                     setCurrentId={setCurrentId}

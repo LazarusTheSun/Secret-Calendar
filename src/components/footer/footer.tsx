@@ -27,12 +27,12 @@ const Footer = () => {
             return (
                 <StyledMenu>
                     <li>
-                        <StyledAppMarketLink href={link} target="_blank">
+                        <StyledAppMarketLink href="https://apps.apple.com/ru/app/secret-kitchen/id1580726480" target="_blank">
                             <AppStoreLogo />
                         </StyledAppMarketLink>
                     </li>
                     <li>
-                        <StyledAppMarketLink href={link} target="_blank">
+                        <StyledAppMarketLink href="https://play.google.com/store/apps/details?id=ru.secretkitchen.mobile" target="_blank">
                             <GooglePlayLogo />
                         </StyledAppMarketLink>
                     </li>

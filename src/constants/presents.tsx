@@ -30,13 +30,9 @@ import present27 from '../images/presents/present-27.png';
 import present28 from '../images/presents/present-28.png';
 import present29 from '../images/presents/present-29.png';
 
-// #TODO после получения данных по подаркам добавить новые объекты и поменять ID у первого
-// потом убрать
-const currentDay = (new Date()).getDate()
-
 export const PRESENTS = [
     {
-        id: currentDay,
+        id: 1,
         promocode: "MIDII",
         title: <p>Мидии под&nbsp;острым соусом в&nbsp;подарок от&nbsp;1890 ₽</p>,
         imgSrc: present1,

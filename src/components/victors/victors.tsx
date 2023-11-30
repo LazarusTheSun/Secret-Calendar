@@ -32,22 +32,22 @@ const Victors = ({
                 window.removeEventListener("resize", heightSetter);
             }
         }
-    }, [window.innerWidth]);
+    }, []);
 
     return (
         <StyledSection ref={ref} isVisible={isVisible}>
             <StyledTitle>Победители конкурса</StyledTitle>
             <StyledWrapper>
-            {VICTORS.map(victor => {
-                const formattedPhone = victor.phone.replace(/\s\d{3}\s/g, " *** ");
+                {VICTORS.map(victor => {
+                    const formattedPhone = victor.phone.replace(/\s\d{3}\s/g, " *** ");
 
-                return (
-                    <StyledVictor>
-                        <StyledPhone icon={victor.icon}>{formattedPhone}</StyledPhone>
-                    </StyledVictor>
-                )
-            })}
-        </StyledWrapper>
+                    return (
+                        <StyledVictor>
+                            <StyledPhone icon={victor.icon}>{formattedPhone}</StyledPhone>
+                        </StyledVictor>
+                    )
+                })}
+            </StyledWrapper>
         </StyledSection>
     )
 };

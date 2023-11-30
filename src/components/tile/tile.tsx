@@ -11,7 +11,6 @@ import {
     StyledClickedTile
 } from './tile.styled';
 import { ITile } from './tile.types';
-import { getTimestamp } from './tile.utils';
 
 import Prize from '../../images/icons/common/prize.svg';
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
@@ -27,29 +26,20 @@ const Tile = ({
     imgSrc,
     isRounded,
     id,
-    timestamp,
+    defaultState,
     actionResultBlockVisibility,
-    setAppState,
     setCurrentId,
+    date,
+    setAppState,
 }: ITile) => {
-    const [state, setState] = useState("default");
+    const [state, setState] = useState(defaultState);
     const [isDisabledClicked, setIsDisabledClicked] = useState(false);
     let clickedTimer = null;
 
-    const tileTimestamp = getTimestamp(id);
+    const day = date.getDate();
 
     useEffect(() => {
-        if (!tileTimestamp) {
-            setState("placeholder");
-            return;
-        }
-
-        if (timestamp > tileTimestamp) {
-            setState("past");
-        }
-
-
-        if (timestamp === tileTimestamp) {
+        if (day === id) {
             Events.scrollEvent.register("end", (to) => {
                 if (to) {
                     return;
@@ -76,21 +66,11 @@ const Tile = ({
         }
 
         return () => {
-            if (timestamp === tileTimestamp) {
+            if (day === id) {
                 Events.scrollEvent.remove("end");
             }
         }
     }, []);
-
-    useEffect(() => {
-        if (timestamp === tileTimestamp) {
-            if (actionResultBlockVisibility === "visible") {
-                setState("clicked");
-            } else {
-                setState("active");
-            }
-        }
-    }, [actionResultBlockVisibility]);
 
     const handleClick = () => {
         if (state === "clicked" || state === "active") {
@@ -112,7 +92,7 @@ const Tile = ({
     };
 
     return state === "clicked" ? (
-        <StyledClickedTile row={row} column={column}>
+        <StyledClickedTile row={row} column={column} onClick={handleClick}>
             <StyledClickedWrapper>
                 <StyledIconWrapper>
                     <Prize />

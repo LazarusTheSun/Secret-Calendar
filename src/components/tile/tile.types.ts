@@ -6,8 +6,9 @@ export interface ITile {
     imgSrc: string;
     isRounded?: boolean;
     id: number | string;
-    timestamp: number;
     actionResultBlockVisibility: TVisibility;
     setAppState: React.Dispatch<React.SetStateAction<IAppState>>;
+    defaultState: string;
     setCurrentId: React.Dispatch<React.SetStateAction<number | null>>;
+    date: Date;
 }
