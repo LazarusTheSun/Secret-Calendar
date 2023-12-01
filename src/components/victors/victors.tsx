@@ -14,7 +14,7 @@ const Victors = ({
     useEffect(() => {
         const heightSetter = () => {
             if (ref.current) {
-                const height = ref.current.offsetHeight;
+                const height = ref.current.clientHeight;
 
                 if (actionResultBLockHeight !== height) {
                     setActionResultBLockHeight(height);

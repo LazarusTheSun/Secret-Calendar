@@ -241,13 +241,20 @@ export const StyledImageWrapper = styled.div<{ isVisible: boolean; }>`
 
     @media screen and (min-width: ${breakpoints.l + 1}px) {
         width: 740px;
+        height: 600px;
         min-width: 740px;
     }
 
     @media screen and (max-width: ${breakpoints.l}px) {
         width: 740px;
         max-width: 100vw;
+        height: 81.5vw;
     }
+`;
+
+export const StyledImage = styled.img`
+    width: 100%;
+    height: auto;
 `;
 
 export const StyledLight = styled.div<{ isVisible: boolean; }>`
@@ -299,10 +306,6 @@ export const StyledLight = styled.div<{ isVisible: boolean; }>`
         width: 100%;
         height: 100%;
     }
-`;
-
-export const StyledImage = styled.img`
-    width: 100%;  
 `;
 
 export const StyledLink = styled.a<{isVisible: boolean;}>`

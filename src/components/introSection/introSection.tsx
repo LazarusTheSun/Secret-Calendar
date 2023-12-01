@@ -29,7 +29,7 @@ const IntroSection = ({
             const description = descriptionRef.current;
             const wrapper = wrapperRef.current;
 
-            const descriptionHeight = description.offsetHeight;
+            const descriptionHeight = description.clientHeight;
 
             if (["idle", "hidden"].includes(actionResultBlockVisibility)) {
                 // поскольку у translateY(-100%) и overflow: hidden нужна компенсация для height и margin 

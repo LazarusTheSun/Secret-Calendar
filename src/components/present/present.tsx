@@ -43,7 +43,7 @@ const Present = ({
     useEffect(() => {
         const heightSetter = () => {
             if (ref.current) {
-                const height = ref.current.offsetHeight;
+                const height = ref.current.clientHeight;
 
                 if (actionResultBLockHeight !== height) {
                     setActionResultBLockHeight(height);
@@ -97,7 +97,7 @@ const Present = ({
                         <StyledLink href={SITE_LINK} target="_blank" isVisible={isVisible}>Заказать</StyledLink>
                     </StyledContent>
                     <StyledImageWrapper isVisible={isVisible}>
-                        <StyledImage src={imageSrc} alt="Подарок" />
+                        <StyledImage width="740" src={imageSrc} alt="Подарок" />
                     </StyledImageWrapper>
                 </StyledPresent>
             </StyledPresentWrapper>
@@ -115,17 +115,6 @@ const Present = ({
                         </>
                     )}
                 </Media>
-                {/* <Media queries={{
-                    large: `(min-width: ${breakpoints.m}px)`,
-                    small: `(max-width: ${breakpoints.m - 1}px)`,
-                }}>
-                    {matches => (
-                        <>
-                            {matches.large && <LightDesktop />}
-                            {matches.small && <LightTablet />}
-                        </>
-                    )}
-                </Media> */}
             </StyledLight>
         </StyledSection>
     )
