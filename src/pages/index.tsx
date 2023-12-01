@@ -13,6 +13,9 @@ export default IndexPage;
 
 export const Head = () => {
 	return (
-		<SEO />
+		<>
+			<html lang="ru" />
+			<SEO />
+		</>
 	)
 }
