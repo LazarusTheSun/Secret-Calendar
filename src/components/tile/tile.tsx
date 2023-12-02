@@ -14,6 +14,7 @@ import { ITile } from './tile.types';
 
 import Prize from '../../images/icons/common/prize.svg';
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
+import { getTimestamp } from './tile.utils';
 
 const SCROLL_OPTIONS = {
     duration: 400,
@@ -26,20 +27,35 @@ const Tile = ({
     imgSrc,
     isRounded,
     id,
-    defaultState,
-    actionResultBlockVisibility,
     setCurrentId,
     date,
     setAppState,
 }: ITile) => {
-    const [state, setState] = useState(defaultState);
+    const [state, setState] = useState("default");
     const [isDisabledClicked, setIsDisabledClicked] = useState(false);
     let clickedTimer = null;
 
-    const day = date.getDate();
+
+    const timestamp = (new Date(date.getFullYear(), date.getMonth(), date.getDate())).getTime();
+    const tileTimestamp = getTimestamp(id);
 
     useEffect(() => {
-        if (day === id) {
+        if (!tileTimestamp) {
+            setState("placeholder");
+            return;
+        }
+
+        if (timestamp > tileTimestamp) {
+            setState("past");
+            return;
+        }
+
+        if (timestamp === tileTimestamp) {
+            setState("active");
+        }
+
+
+        if (timestamp === tileTimestamp) {
             Events.scrollEvent.register("end", (to) => {
                 if (to) {
                     return;
@@ -66,7 +82,7 @@ const Tile = ({
         }
 
         return () => {
-            if (day === id) {
+            if (timestamp === tileTimestamp) {
                 Events.scrollEvent.remove("end");
             }
         }

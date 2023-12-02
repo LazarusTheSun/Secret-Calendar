@@ -5,7 +5,6 @@ import { StyledCalendar } from './calendar.styled';
 
 import Tile from '../tile/tile';
 import { ICalendar } from './calendar.types';
-import { getDefaultState } from '../tile/tile.utils';
 
 const Calendar = ({
     setAppState,
@@ -45,8 +44,6 @@ const Calendar = ({
             columns={GRID_LAYOUT_CONFIG[gridType as keyof typeof GRID_LAYOUT_CONFIG].columns}
         >
             {GRID_TILES_CONFIG.map(tile => {
-                const defaultState = getDefaultState(date.getMonth(), date.getDate(), tile.id);
-
                 return (
                     <Tile
                         key={tile.id}
@@ -56,7 +53,6 @@ const Calendar = ({
                         imgSrc={ gridType === "large" ? tile.images.web : tile.images.mobile }
                         id={tile.id}
                         date={date}
-                        defaultState={defaultState}
                         actionResultBlockVisibility={actionResultBlockVisibility}
                         setCurrentId={setCurrentId}
                         setAppState={setAppState}
