@@ -54,15 +54,6 @@ const config: GatsbyConfig = {
 				}
 			}
 		},
-		{
-			resolve: `gatsby-plugin-yandex-metrika`,
-			options: {
-				trackingId: 91607576,
-				webvisor: true,
-				trackHash: true,
-				afterBody: true,
-			},
-		},
 	]
 };
 
