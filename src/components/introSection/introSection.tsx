@@ -12,13 +12,16 @@ import {
 
 import Secret from '../../images/icons/common/secret.svg';
 import { IIntroSection } from './introSection.types';
+import { useUnit } from 'effector-react';
+import { actionBlock } from '../../effector/actionBlock/state';
+import { updateActionBlock } from '../../effector/actionBlock/event';
 
 const IntroSection = ({
-    actionResultBlockVisibility,
     date,
-    setAppState,
     setCurrentId,
 }: IIntroSection) => {
+    const actionBlockStore = useUnit(actionBlock);
+    const updateActionBlockEvent = useUnit(updateActionBlock);
     const descriptionRef = useRef<HTMLDivElement | null>(null);
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,7 +34,7 @@ const IntroSection = ({
 
             const descriptionHeight = description.clientHeight;
 
-            if (["idle", "hidden"].includes(actionResultBlockVisibility)) {
+            if (["idle", "hidden"].includes(actionBlockStore.visibility)) {
                 // поскольку у translateY(-100%) и overflow: hidden нужна компенсация для height и margin 
                 wrapper.style.height = `${descriptionHeight * 2}px`;
                 wrapper.style.marginTop = `-${descriptionHeight}px`;
@@ -40,15 +43,13 @@ const IntroSection = ({
                 wrapper.style.marginTop = `0px`;
             }
         }
-    }, [actionResultBlockVisibility]);
+    }, [actionBlockStore.visibility]);
 
     const getText = () => {
         if (day < 30) {
             return (
                 <p>
-                    Каждый день с 1 по 29 декабря тебя ждёт новый подарок. 
-                    Открывай карточки и&nbsp;получай сюрприз, который мы&nbsp;приготовили в&nbsp;этот день. 
-                    А&nbsp;30&nbsp;декабря мы&nbsp;разыграем супер призы среди всех участников промо.
+                    Листай лендинг вниз и выбирай сегодняшнее число, под ним скрывается подарок-дня. Каждый день новый.
                     <Link to="info" smooth={true} duration={1000} isDynamic>
                         <StyledLearnMore>
                             Подробнее
@@ -65,10 +66,10 @@ const IntroSection = ({
                 Пусть в вашем доме всегда царят душевный покой, уют, радость и оптимизм! 
                 И конечно, пусть все проблемы и заботы останутся в уходящем году!
                 <StyledLearnMore onClick={() => {
-                    setAppState({
-                        isActionResultBlockRendered: true,
-                        actionResultBlockType: "victor",
-                        actionResultBlockVisibility: "visible",
+                    updateActionBlockEvent({
+                        isRendered: true,
+                        type: "victor",
+                        visibility: "visible",
                     });
     
                     setCurrentId(null);
@@ -81,14 +82,14 @@ const IntroSection = ({
 
     return (
         <StyledSection>
-            <StyledTitle actionResultBlockVisibility={actionResultBlockVisibility}>
-                <StyledSecret actionResultBlockVisibility={actionResultBlockVisibility}>
+            <StyledTitle actionResultBlockVisibility={actionBlockStore.visibility}>
+                <StyledSecret actionResultBlockVisibility={actionBlockStore.visibility}>
                     <Secret />
                 </StyledSecret>
                 Календарь
             </StyledTitle>
-            <StyledWrapper ref={wrapperRef} day={day} actionResultBlockVisibility={actionResultBlockVisibility}>
-                <StyledDescription ref={descriptionRef} day={day} actionResultBlockVisibility={actionResultBlockVisibility}>
+            <StyledWrapper ref={wrapperRef} day={day} actionResultBlockVisibility={actionBlockStore.visibility}>
+                <StyledDescription ref={descriptionRef} day={day} actionResultBlockVisibility={actionBlockStore.visibility}>
                     {getText()}
                 </StyledDescription>
             </StyledWrapper>

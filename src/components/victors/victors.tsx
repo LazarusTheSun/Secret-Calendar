@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useUnit } from 'effector-react';
 
 import { VICTORS } from './victors.constants';
 import { StyledVictor, StyledWrapper, StyledPhone, StyledSection, StyledTitle } from './victors.styled';
-import { IVictors } from './victors.types';
+import { actionBlock } from '../../effector/actionBlock/state';
+import { updateHeight } from '../../effector/actionBlock/event';
 
-const Victors = ({
-    setActionResultBLockHeight,
-    actionResultBLockHeight,
-}: IVictors) => {
+const Victors = () => {
+    const actionBlockStore = useUnit(actionBlock);
+    const updateHeightEvent = useUnit(updateHeight);
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef<HTMLDivElement | null>(null);
 
@@ -16,8 +17,8 @@ const Victors = ({
             if (ref.current) {
                 const height = ref.current.clientHeight;
 
-                if (actionResultBLockHeight !== height) {
-                    setActionResultBLockHeight(height);
+                if (actionBlockStore.height !== height) {
+                    updateHeightEvent({height});
                 }
             }
         }

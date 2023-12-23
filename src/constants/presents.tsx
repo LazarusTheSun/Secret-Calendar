@@ -76,7 +76,7 @@ export const PRESENTS = [
     {
         id: 8,
         promocode: "KARAAGE",
-        title: <p>Салат с&nbsp;курицей карааге</p>,
+        title: <p>Салат с&nbsp;курицей карааге от&nbsp;1890 ₽</p>,
         imgSrc: present8,
     },
     {

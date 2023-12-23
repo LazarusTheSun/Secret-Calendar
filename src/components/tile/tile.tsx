@@ -1,5 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { animateScroll as scroll, Events } from 'react-scroll';
+import { useUnit } from 'effector-react';
 
 import {
     StyledTile,
@@ -16,6 +17,8 @@ import Prize from '../../images/icons/common/prize.svg';
 import { ANIMATIONS_TIMINGS } from '../../constants/animations';
 import { getTimestamp } from './tile.utils';
 
+import { updateActionBlock } from '../../effector/actionBlock/event';
+
 const SCROLL_OPTIONS = {
     duration: 400,
     smooth: "easeInOutQuad",
@@ -29,12 +32,11 @@ const Tile = ({
     id,
     setCurrentId,
     date,
-    setAppState,
 }: ITile) => {
+    const updateActionBlockEvent = useUnit(updateActionBlock);
     const [state, setState] = useState("default");
     const [isDisabledClicked, setIsDisabledClicked] = useState(false);
     let clickedTimer = null;
-
 
     const timestamp = (new Date(date.getFullYear(), date.getMonth(), date.getDate())).getTime();
     const tileTimestamp = getTimestamp(id);
@@ -62,18 +64,18 @@ const Tile = ({
                 }
 
                 if (id as number < 30) {
-                    setAppState({
-                        isActionResultBlockRendered: true,
-                        actionResultBlockType: "present",
-                        actionResultBlockVisibility: "visible",
+                    updateActionBlockEvent({
+                        isRendered: true,
+                        type: "present",
+                        visibility: "visible",
                     });
 
                     setCurrentId(id as number);
                 } else {
-                    setAppState({
-                        isActionResultBlockRendered: true,
-                        actionResultBlockType: "victor",
-                        actionResultBlockVisibility: "visible",
+                    updateActionBlockEvent({
+                        isRendered: true,
+                        type: "victor",
+                        visibility: "visible",
                     });
     
                     setCurrentId(null);

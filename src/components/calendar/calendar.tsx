@@ -7,8 +7,6 @@ import Tile from '../tile/tile';
 import { ICalendar } from './calendar.types';
 
 const Calendar = ({
-    setAppState,
-    actionResultBlockVisibility,
     setCurrentId,
     date,
 }: ICalendar) => {
@@ -53,9 +51,7 @@ const Calendar = ({
                         imgSrc={ gridType === "large" ? tile.images.web : tile.images.mobile }
                         id={tile.id}
                         date={date}
-                        actionResultBlockVisibility={actionResultBlockVisibility}
                         setCurrentId={setCurrentId}
-                        setAppState={setAppState}
                     />
                 )
             }

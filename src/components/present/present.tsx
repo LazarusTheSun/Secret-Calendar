@@ -28,13 +28,16 @@ import LightTablet from '../../images/common/light-tablet.svg';
 import LightMobile from '../../images/common/light-mobile.svg';
 import { SITE_LINK } from '../../constants/common';
 
+import { actionBlock } from '../../effector/actionBlock/state';
+import { updateHeight } from '../../effector/actionBlock/event';
+import { useUnit } from 'effector-react';
+
 const Present = ({
     title,
     promocode,
     imageSrc,
-    actionResultBLockHeight,
-    setActionResultBLockHeight,
 }: IPresent) => {
+    const [ actionBlockStore, updateHeightEvent ] = useUnit([actionBlock, updateHeight]);
     const [isCopied, setIsCopied] = useState(false);
     const ref = useRef<HTMLDivElement | null>(null);
 
@@ -45,8 +48,8 @@ const Present = ({
             if (ref.current) {
                 const height = ref.current.clientHeight;
 
-                if (actionResultBLockHeight !== height) {
-                    setActionResultBLockHeight(height);
+                if (actionBlockStore.height !== height) {
+                    updateHeightEvent({height});
                 }
             }
         }
