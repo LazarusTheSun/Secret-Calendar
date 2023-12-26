@@ -2,9 +2,12 @@
   "majorWhite": "#ffffff",
   "majorBlack": "#000000",
   "minorBlack": "#212121",
+  "minorBlack2": "#101010",
+  "minorBlack3": "#1a1a1a",
   "majorGrey": "#ACACAC",
   "minorGray": "#373737",
   "majorGreyDarker": "#3C3C3C",
   "majorYellow": "#FFC148",
-  "majorYellowDarker": "#FFB72C"
+  "majorYellowDarker": "#FFB72C",
+  "majorRed": "#C41718"
 }

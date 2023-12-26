@@ -6,7 +6,11 @@ import { StyledVictor, StyledWrapper, StyledPhone, StyledSection, StyledTitle } 
 import { actionBlock } from '../../effector/actionBlock/state';
 import { updateHeight } from '../../effector/actionBlock/event';
 
-const Victors = () => {
+const Victors = ({
+    isAnimated,
+} : {
+    isAnimated?: boolean;
+}) => {
     const actionBlockStore = useUnit(actionBlock);
     const updateHeightEvent = useUnit(updateHeight);
     const [isVisible, setIsVisible] = useState(false);
@@ -25,10 +29,10 @@ const Victors = () => {
 
         if (ref.current) {
             heightSetter();
-
             setIsVisible(true);
 
             window.addEventListener("resize", heightSetter);
+
             return () => {
                 window.removeEventListener("resize", heightSetter);
             }
@@ -36,7 +40,7 @@ const Victors = () => {
     }, []);
 
     return (
-        <StyledSection ref={ref} isVisible={isVisible}>
+        <StyledSection ref={ref} isAnimated={isAnimated} isVisible={isVisible}>
             <StyledTitle>Победители конкурса</StyledTitle>
             <StyledWrapper>
                 {VICTORS.map(victor => {

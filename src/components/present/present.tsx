@@ -37,7 +37,8 @@ const Present = ({
     promocode,
     imageSrc,
 }: IPresent) => {
-    const [ actionBlockStore, updateHeightEvent ] = useUnit([actionBlock, updateHeight]);
+    const actionBlockStore = useUnit(actionBlock);
+    const updateHeightEvent = useUnit(updateHeight);
     const [isCopied, setIsCopied] = useState(false);
     const ref = useRef<HTMLDivElement | null>(null);
 

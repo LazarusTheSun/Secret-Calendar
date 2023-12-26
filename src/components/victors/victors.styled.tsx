@@ -4,20 +4,29 @@ import colors from '../../constants/colors.json';
 import breakpoints from '../../constants/breakpoints.json';
 import { ANIMATIONS_TIMINGS } from "../../constants/animations";
 
-export const StyledSection = styled.section<{isVisible: boolean;}>`
-    opacity: 0;
-    transform: translateY(30%);
+export const StyledSection = styled.section<{isVisible?: boolean; isAnimated?: boolean;}>`
+    opacity: 1;
+    transform: translateY(0);
     transition:
         opacity ${ANIMATIONS_TIMINGS.baseTransitionTime * 0.5}ms ease-in-out,
         transform ${ANIMATIONS_TIMINGS.baseTransitionTime}ms ease-in-out;
+    
+    ${({isAnimated, isVisible}) => {
+        if (isAnimated) {
+            return isVisible ? `
+                opacity: 1;
+                transform: translateY(0);
+            ` : `
+                opacity: 0;
+                transform: translateY(30%);
+            `;
+        }
 
-    ${({isVisible}) => isVisible ? `
-        opacity: 1;
-        transform: translateY(0);
-    ` : `
-        opacity: 0;
-        transform: translateY(30%);
-    `}
+        return `
+                opacity: 1;
+                transform: translateY(0);
+            `;
+    }}
 
     @media screen and (min-width: ${breakpoints.m + 1}px) and (max-width: ${breakpoints.xl - 1}px) {
         margin: 0 -54px;

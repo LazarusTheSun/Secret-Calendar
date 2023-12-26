@@ -9,11 +9,11 @@ import LayoutWrapper from '../layoutWrapper/layoutWrapper';
 
 import { getPresent } from '../../utils/getPresent';
 
-import { StyledActionResultBlockWrapper } from './activePromoScenario.styled';
+import { StyledActionResultBlockWrapper } from './stageOnePromoScenario.styled';
 import { useUnit } from 'effector-react';
 import { actionBlock } from '../../effector/actionBlock/state';
 
-const ActivePromoScenario = () => {
+const StageOnePromoScenario = () => {
     const date = new Date();
 
     const actionBlockStore = useUnit(actionBlock);
@@ -27,7 +27,7 @@ const ActivePromoScenario = () => {
 
         if (actionBlockStore.type === "victor") {
             return (
-                <Victors />
+                <Victors isAnimated />
             );
         }
 
@@ -70,4 +70,4 @@ const ActivePromoScenario = () => {
     )
 };
 
-export default ActivePromoScenario;
+export default StageOnePromoScenario;

@@ -91,7 +91,7 @@ export const StyledLabel = styled.div`
     color: ${colors.majorBlack};
     text-transform: uppercase;
     border-radius: 8px;
-    background-color: ${colors.majorWhite};  
+    background-color: ${colors.majorWhite};
 `;
 
 export const StyledTitle = styled.div`

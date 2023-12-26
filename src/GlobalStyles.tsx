@@ -9,6 +9,16 @@ const GlobalStyles = createGlobalStyle`
 		padding: 0;
 	}
 
+	html {
+		&.modal-opened {
+			overflow: hidden;
+
+			body {
+				overflow: hidden;
+			}
+		}
+	}
+
 	body {
 		font-family: "Source Sans Pro", sans-serif;
 		color: ${colors.majorWhite};
