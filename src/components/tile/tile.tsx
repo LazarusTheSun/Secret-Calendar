@@ -66,7 +66,7 @@ const Tile = ({
                 if (id as number < 30) {
                     updateActionBlockEvent({
                         isRendered: true,
-                        type: "victor",
+                        type: "present",
                         visibility: "visible",
                     });
 
