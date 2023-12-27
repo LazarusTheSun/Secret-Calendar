@@ -9,5 +9,7 @@
   "majorGreyDarker": "#3C3C3C",
   "majorYellow": "#FFC148",
   "majorYellowDarker": "#FFB72C",
-  "majorRed": "#C41718"
+  "majorRed": "#C41718",
+  "minorRed": "#EC191A",
+  "minorRed2": "#B41415"
 }

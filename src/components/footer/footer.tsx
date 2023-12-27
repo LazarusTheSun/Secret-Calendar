@@ -17,6 +17,8 @@ import AppStoreLogo from '../../images/icons/app-markets/apple.svg';
 import GooglePlayLogo from '../../images/icons/app-markets/google.svg';
 import { useGetDeviceType } from '../../hooks/useGetDeviceType';
 
+import rulesPdf from '../../docs/rules.pdf';
+
 const Footer = () => {
     const device = useGetDeviceType();
 
@@ -74,7 +76,7 @@ const Footer = () => {
                             <StyledPolicyLink href="https://secret-kitchen.ru/moskva/page/terms-of-use" target="_blank">правовые документы</StyledPolicyLink>
                         </li>
                         <li>
-                            <StyledPolicyLink href="#" target="_blank">полные условия</StyledPolicyLink>
+                            <StyledPolicyLink href={rulesPdf} target="_blank">полные условия</StyledPolicyLink>
                         </li>
                     </StyledPoliciesMenu>
                 </nav>

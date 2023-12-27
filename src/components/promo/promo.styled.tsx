@@ -5,6 +5,7 @@ import breakpoints from '../../constants/breakpoints.json';
 
 import decorarionPattern from '../../images/common/decoration-pattern.png';
 import evergreen from '../../images/common/evergreen.png';
+import { ANIMATIONS_TIMINGS } from "../../constants/animations";
 
 export const StyledSection = styled.section`
     position: relative;
@@ -330,9 +331,18 @@ export const StyledPromocode = styled.button`
     border: none;
     border-radius: 25px;
     background-color: ${colors.majorRed};
+    transition: background-color ${ANIMATIONS_TIMINGS.baseOpacityTime}ms ease-in-out;
 
     @media (hover) {
         cursor: pointer;
+
+        &:hover {
+            background-color: ${colors.minorRed};
+        }
+    }
+
+    &:active {
+        background-color: ${colors.minorRed2};
     }
 
     @media screen and (min-width: ${breakpoints.s}px) {
