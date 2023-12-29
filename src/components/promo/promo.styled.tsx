@@ -237,6 +237,7 @@ export const StyledDiscountValue = styled.div`
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin-bottom: -10px;
         font-size: 60px;
         line-height: 72px;
     }
@@ -260,6 +261,7 @@ export const StyledDiscountTitle = styled.div`
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
+        margin-bottom: -5px;
         font-size: 38px;
         line-height: 45px;
     }
@@ -292,6 +294,8 @@ export const StyledDiscountNote = styled.div`
 
 
 export const StyledDiscountDuration = styled.div`
+    text-transform: uppercase;
+
     @media screen and (min-width: ${breakpoints.s}px) {
         margin-bottom: 24px;
         font-size: 20px;
@@ -307,7 +311,6 @@ export const StyledDiscountDuration = styled.div`
         margin-bottom: 16px;
         font-size: 16px;
         line-height: 20px;
-        text-transform: uppercase;
     }
 `;
 

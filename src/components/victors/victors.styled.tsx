@@ -101,22 +101,25 @@ export const StyledVictor = styled.div`
 `;
 
 export const StyledPhone = styled.div<{icon: string;}>`
-    padding-left: 68px;
     ${({icon}) => `
-        background: url(${icon}) no-repeat left center / 44px;
+        background: url(${icon}) no-repeat left center;
     `}
     
     @media screen and (min-width: ${breakpoints.s}px) {
         padding-top: 7px;
+        padding-left: 68px;
         padding-bottom: 7px;
         font-size: 24px;
         line-height: 30px;
+        background-size: 44px;
     }
 
     @media screen and (max-width: ${breakpoints.s - 1}px) {
         padding-top: 4px;
         padding-bottom: 4px;
+        padding-left: 56px;
         font-size: 20px;
         line-height: 25px;
+        background-size: 32px;
     }
 `;
